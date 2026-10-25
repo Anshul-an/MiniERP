@@ -80,3 +80,24 @@ model LeaveBalance {
   @@unique([employeeId, leaveType, year])
   @@map("leave_balances")
 }
+
+model PurchaseRequest {
+  id                String         @id @default(cuid())
+  raisedById        String         @map("raised_by")
+  title             String
+  description       String
+  itemName          String         @map("item_name")
+  quantity          Int
+  estimatedCost     Float          @map("estimated_cost")
+  vendorName        String?        @map("vendor_name")
+  status            PurchaseStatus @default(DRAFT)
+  managerId         String?        @map("manager_id")
+  managerApprovedAt DateTime?      @map("manager_approved_at")
+  adminId           String?        @map("admin_id")
+  adminApprovedAt   DateTime?      @map("admin_approved_at")
+  rejectionReason   String?        @map("rejection_reason")
+  createdAt         DateTime       @default(now()) @map("created_at")
+  updatedAt         DateTime       @updatedAt @map("updated_at")
+
+  @@map("purchase_requests")
+}
