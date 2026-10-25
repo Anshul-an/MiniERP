@@ -24,3 +24,13 @@ enum LeaveStatus {
   APPROVED
   REJECTED
 }
+
+enum PurchaseStatus {
+  DRAFT
+  PENDING_MANAGER
+  PENDING_ADMIN
+  APPROVED
+  REJECTED
+  ORDERED
+  RECEIVED
+}
