@@ -66,3 +66,17 @@ model LeaveRequest {
 
   @@map("leave_requests")
 }
+
+model LeaveBalance {
+  id         String    @id @default(cuid())
+  employeeId String    @map("employee_id")
+  leaveType  LeaveType @map("leave_type")
+  totalDays  Int       @map("total_days")
+  usedDays   Int       @default(0) @map("used_days")
+  year       Int
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  @@unique([employeeId, leaveType, year])
+  @@map("leave_balances")
+}
