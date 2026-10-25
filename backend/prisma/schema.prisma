@@ -48,3 +48,21 @@ model User {
 
   @@map("users")
 }
+
+model LeaveRequest {
+  id           String      @id @default(cuid())
+  employeeId   String      @map("employee_id")
+  leaveType    LeaveType   @map("leave_type")
+  startDate    DateTime    @map("start_date")
+  endDate      DateTime    @map("end_date")
+  daysCount    Int         @map("days_count")
+  reason       String
+  status       LeaveStatus @default(PENDING)
+  reviewedBy   String?     @map("reviewed_by")
+  reviewedAt   DateTime?   @map("reviewed_at")
+  rejectReason String?     @map("reject_reason")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+
+  @@map("leave_requests")
+}
