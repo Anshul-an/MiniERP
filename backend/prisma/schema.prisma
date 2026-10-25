@@ -46,6 +46,13 @@ model User {
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt @map("updated_at")
 
+  leaveRequests    LeaveRequest[]    @relation("EmployeeLeave")
+  reviewedLeaves   LeaveRequest[]    @relation("ReviewedLeave")
+  leaveBalances    LeaveBalance[]
+  raisedPurchases  PurchaseRequest[] @relation("RaisedBy")
+  managerPurchases PurchaseRequest[] @relation("ManagerApproval")
+  adminPurchases   PurchaseRequest[] @relation("AdminApproval")
+
   @@map("users")
 }
 
@@ -64,6 +71,9 @@ model LeaveRequest {
   createdAt    DateTime    @default(now()) @map("created_at")
   updatedAt    DateTime    @updatedAt @map("updated_at")
 
+  employee User  @relation("EmployeeLeave", fields: [employeeId], references: [id])
+  reviewer User? @relation("ReviewedLeave", fields: [reviewedBy], references: [id])
+
   @@map("leave_requests")
 }
 
@@ -76,6 +86,8 @@ model LeaveBalance {
   year       Int
   createdAt  DateTime  @default(now()) @map("created_at")
   updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  employee User @relation(fields: [employeeId], references: [id])
 
   @@unique([employeeId, leaveType, year])
   @@map("leave_balances")
@@ -98,6 +110,10 @@ model PurchaseRequest {
   rejectionReason   String?        @map("rejection_reason")
   createdAt         DateTime       @default(now()) @map("created_at")
   updatedAt         DateTime       @updatedAt @map("updated_at")
+
+  raisedBy User  @relation("RaisedBy", fields: [raisedById], references: [id])
+  manager  User? @relation("ManagerApproval", fields: [managerId], references: [id])
+  admin    User? @relation("AdminApproval", fields: [adminId], references: [id])
 
   @@map("purchase_requests")
 }
