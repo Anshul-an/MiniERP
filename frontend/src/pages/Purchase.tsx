@@ -1,5 +1,5 @@
 import { useEffect, useState, FormEvent } from 'react';
-import { ShoppingCart, Send, CheckCircle, XCircle } from 'lucide-react';
+import { ShoppingCart, Send, CheckCircle, XCircle, Package } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { StatusBadge } from '../components/StatusBadge';
 import { ApprovalTimeline } from '../components/ApprovalTimeline';
@@ -388,3 +388,4 @@ export function Purchase() {
     </div>
   );
 }
+
