@@ -1,5 +1,5 @@
 import { useEffect, useState, FormEvent } from 'react';
-import { CalendarDays, Send, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { CalendarDays, Send, Clock, CheckCircle, XCircle, Info } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { StatusBadge } from '../components/StatusBadge';
 import { EmptyState } from '../components/EmptyState';
@@ -375,3 +375,4 @@ export function Leave() {
     </div>
   );
 }
+
