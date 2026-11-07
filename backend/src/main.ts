@@ -1,13 +1,15 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const logger = new Logger('Bootstrap');
 
   app.enableCors({
-    origin: true,
+    origin: ['http://localhost:5173', process.env.FRONTEND_URL || '*'],
     credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
   });
 
   app.useGlobalPipes(
@@ -20,7 +22,6 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
-  console.log(MiniERP server running on http://localhost:+"${port}");
+  logger.log('MiniERP API running on http://localhost:' + port);
 }
 bootstrap();
-
