@@ -6,6 +6,8 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateLeaveDto } from './dto/create-leave.dto';
+import { LEAVE_DEFAULTS } from './leave.constants';
+
 
 @Injectable()
 export class LeaveService {
@@ -266,4 +268,5 @@ export class LeaveService {
     });
   }
 }
+
 
