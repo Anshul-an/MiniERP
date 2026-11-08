@@ -60,7 +60,7 @@ export class DashboardService {
       count: item._count.id,
     }));
 
-    // recent activity
+    // recent activity — combine leave and purchase into unified feed
     const recentLeaves = await this.prisma.leaveRequest.findMany({
       take: 5,
       orderBy: { createdAt: 'desc' },
@@ -201,3 +201,4 @@ export class DashboardService {
     };
   }
 }
+
