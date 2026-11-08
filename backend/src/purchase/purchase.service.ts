@@ -12,7 +12,7 @@ import { PurchaseStatus } from '@prisma/client';
 export class PurchaseService {
   constructor(private prisma: PrismaService) {}
 
-  // Status transition map - enforce strict state machine
+  // Strict status state machine - no skipping stages allowed
   private readonly validTransitions: Record<PurchaseStatus, PurchaseStatus[]> = {
     DRAFT: ['PENDING_MANAGER'],
     PENDING_MANAGER: ['PENDING_ADMIN', 'REJECTED'],
@@ -260,3 +260,4 @@ export class PurchaseService {
       .sort((a, b) => a.month.localeCompare(b.month));
   }
 }
+
