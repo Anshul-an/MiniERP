@@ -31,6 +31,7 @@ function formatCurrency(n: number) {
 
 export function Dashboard() {
   const { isAdmin, isManager, isEmployee, user } = useAuth();
+  // set page title based on role
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -246,3 +247,4 @@ export function Dashboard() {
     </div>
   );
 }
+
