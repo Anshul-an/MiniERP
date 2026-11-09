@@ -1,3 +1,4 @@
+/** LeaveService - handles all leave request operations */
 import {
   Injectable,
   BadRequestException,
@@ -268,5 +269,6 @@ export class LeaveService {
     });
   }
 }
+
 
 
