@@ -88,3 +88,13 @@ npm run dev
 
 Trigger manually: GET /admin/trigger-digest (Admin auth required)
 # Local Development Notes
+
+## Local Development with Docker
+
+The easiest way to run MiniERP locally is with Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+This starts PostgreSQL and the backend. Access the API at `http://localhost:3000`.
