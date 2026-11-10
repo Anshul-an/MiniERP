@@ -87,3 +87,4 @@ npm run dev
 - **1st of month** — resets casual leave used_days to 0
 
 Trigger manually: GET /admin/trigger-digest (Admin auth required)
+# Local Development Notes
