@@ -5,3 +5,9 @@ export const LEAVE_DEFAULTS = {
 } as const;
 
 export const LEAVE_TYPES = ['SICK', 'CASUAL', 'ANNUAL'] as const;
+
+// Additional constants
+export const MAX_ANNUAL_LEAVE_DAYS = 20;
+export const MAX_SICK_LEAVE_DAYS = 12;
+export const MAX_CASUAL_LEAVE_DAYS = 10;
+export const WORKING_DAYS_PER_WEEK = 5;
