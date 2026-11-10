@@ -60,3 +60,4 @@ export class DigestJob {
   }
 }
 // wip: thinking about adding email notifications
+// TODO: add nodemailer integration
