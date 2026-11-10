@@ -59,3 +59,4 @@ export class DigestJob {
     return { triggered: true, timestamp: new Date().toISOString() };
   }
 }
+// wip: thinking about adding email notifications
