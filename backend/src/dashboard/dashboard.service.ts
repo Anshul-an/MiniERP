@@ -202,3 +202,4 @@ export class DashboardService {
   }
 }
 
+// null check: handle case when no purchase requests exist
