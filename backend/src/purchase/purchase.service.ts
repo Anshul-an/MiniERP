@@ -261,3 +261,4 @@ export class PurchaseService {
   }
 }
 
+// note: vendor_name is optional for internal purchase requests
