@@ -248,3 +248,4 @@ export function Dashboard() {
   );
 }
 
+// dashboard charts should be responsive - wrap in ResponsiveContainer
