@@ -391,3 +391,4 @@ export function Purchase() {
 }
 
 
+// Purchase page - display 'N/A' for missing vendor name
