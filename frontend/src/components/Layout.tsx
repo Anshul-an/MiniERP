@@ -141,3 +141,4 @@ export function Layout({ children }: LayoutProps) {
   );
 }
 // add mobile responsiveness note
+// fix: close mobile nav on route change
