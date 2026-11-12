@@ -140,3 +140,4 @@ export function Layout({ children }: LayoutProps) {
     </div>
   );
 }
+// add mobile responsiveness note
