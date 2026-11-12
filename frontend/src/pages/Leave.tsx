@@ -378,3 +378,4 @@ export function Leave() {
 }
 
 
+// Leave page - display rejection reason in tooltip or expanded row
