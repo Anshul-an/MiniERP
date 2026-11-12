@@ -80,3 +80,4 @@ export function useAuth() {
   }
   return context;
 }
+// minor cleanup in auth context
