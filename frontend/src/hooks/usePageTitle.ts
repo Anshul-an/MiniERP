@@ -8,3 +8,4 @@ export function usePageTitle(title: string) {
     };
   }, [title]);
 }
+// add title to browser tab
