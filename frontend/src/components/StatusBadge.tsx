@@ -30,3 +30,4 @@ export function StatusBadge({ status }: StatusBadgeProps) {
     </span>
   );
 }
+// StatusBadge: add ORDERED and RECEIVED variants for purchase status
