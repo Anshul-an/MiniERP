@@ -34,3 +34,4 @@ export function StatCard({ title, value, icon, color = 'blue', subtitle }: StatC
     </div>
   );
 }
+// improve StatCard hover effect
