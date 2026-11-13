@@ -381,3 +381,4 @@ export function Leave() {
 // Leave page - display rejection reason in tooltip or expanded row
 // add Breadcrumb to Leave page
 // fix: prevent form double submit on leave apply
+// add loading state to approve/reject buttons
