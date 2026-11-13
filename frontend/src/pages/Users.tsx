@@ -130,3 +130,4 @@ export function Users() {
   );
 }
 // refactor: use DataTable in Users page
+// fix: handle undefined user in Users page
