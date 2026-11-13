@@ -251,3 +251,4 @@ export function Dashboard() {
 // dashboard charts should be responsive - wrap in ResponsiveContainer
 // fix: show empty state when no data in charts
 // add PageHeader with subtitle to Dashboard
+// fix: recharts tooltip formatting for currency
