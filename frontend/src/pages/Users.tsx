@@ -129,3 +129,4 @@ export function Users() {
     </div>
   );
 }
+// refactor: use DataTable in Users page
