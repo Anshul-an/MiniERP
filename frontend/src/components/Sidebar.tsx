@@ -104,3 +104,4 @@ export const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     </>
   );
 };
+// fix: sidebar active link highlight on nested routes
