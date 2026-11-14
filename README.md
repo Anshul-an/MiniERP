@@ -98,3 +98,48 @@ docker-compose up -d
 ```
 
 This starts PostgreSQL and the backend. Access the API at `http://localhost:3000`.
+
+---
+
+## Deployment
+
+### Backend (Railway)
+
+1. Create account at [railway.app](https://railway.app)
+2. Create new project ? Deploy from GitHub
+3. Add a PostgreSQL service to the project
+4. Set environment variables:
+   - `DATABASE_URL` (auto-provided by Railway PostgreSQL)
+   - `JWT_SECRET` (generate a strong secret)
+   - `CORS_ORIGIN` (your Vercel frontend URL)
+5. Railway auto-detects `railway.toml` and builds/deploys
+
+After first deploy, run:
+```bash
+railway run npx prisma migrate deploy
+railway run npx prisma db seed
+```
+
+### Frontend (Vercel)
+
+1. Push code to GitHub
+2. Import repo at [vercel.com](https://vercel.com)
+3. Set environment variable:
+   - `VITE_API_URL` = your Railway backend URL
+4. Deploy — Vercel handles the rest
+
+### Database Schema
+
+After connecting to Railway PostgreSQL, run:
+```bash
+DATABASE_URL=<railway-url> npx prisma migrate deploy
+DATABASE_URL=<railway-url> npx prisma db seed
+```
+
+### Demo Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@minierp.com | Admin@123 |
+| Manager | manager1@minierp.com | Manager@123 |
+| Employee | employee1@minierp.com | Employee@123 |
