@@ -72,3 +72,4 @@ export default function App() {
   );
 }
 
+// add 404 route to App.tsx
