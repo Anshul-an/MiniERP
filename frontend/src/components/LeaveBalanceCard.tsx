@@ -30,3 +30,4 @@ export function LeaveBalanceCard({ balance }: { balance: LeaveBalance }) {
     </div>
   );
 }
+// improve LeaveBalanceCard: show progress bar
