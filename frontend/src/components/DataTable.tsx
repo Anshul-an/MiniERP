@@ -82,3 +82,4 @@ export function DataTable<T>({
     </div>
   );
 }
+// docs: add prop descriptions to DataTable
