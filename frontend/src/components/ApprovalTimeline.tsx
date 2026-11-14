@@ -83,3 +83,4 @@ export function ApprovalTimeline({ status }: ApprovalTimelineProps) {
     </div>
   );
 }
+// fix: approval timeline shows correct step for ORDERED status
