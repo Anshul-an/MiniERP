@@ -252,3 +252,4 @@ export function Dashboard() {
 // fix: show empty state when no data in charts
 // add PageHeader with subtitle to Dashboard
 // fix: recharts tooltip formatting for currency
+// add usePageTitle to all pages
