@@ -37,3 +37,4 @@ export const Topbar: React.FC<TopbarProps> = ({ onMenuClick, title }) => {
     </header>
   );
 };
+// add aria-labels to icon buttons for accessibility
