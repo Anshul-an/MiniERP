@@ -51,3 +51,4 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
   );
 }
 // improve modal backdrop click handling
+// add escape key handler to Modal
