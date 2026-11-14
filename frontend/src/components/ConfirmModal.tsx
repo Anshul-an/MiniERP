@@ -42,3 +42,4 @@ export function ConfirmModal({
     </Modal>
   );
 }
+// fix: ConfirmModal button alignment
