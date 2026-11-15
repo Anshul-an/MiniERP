@@ -262,3 +262,4 @@ main()
   .finally(() => prisma.$disconnect());
 // seed: added more realistic purchase request data
 // seed: added leave balance initialization for all employees
+// fix: seed should not fail if users already exist - use upsert
