@@ -37,3 +37,4 @@ import { HealthController } from './health.controller';
   ],
 })
 export class AppModule {}
+// global: HttpExceptionFilter registered in main.ts
