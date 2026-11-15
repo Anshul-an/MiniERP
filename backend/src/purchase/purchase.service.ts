@@ -263,3 +263,4 @@ export class PurchaseService {
 
 // note: vendor_name is optional for internal purchase requests
 // fix: check request belongs to dept before manager approval
+// fix: status check before marking as ordered
