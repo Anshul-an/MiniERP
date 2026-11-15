@@ -382,3 +382,4 @@ export function Leave() {
 // add Breadcrumb to Leave page
 // fix: prevent form double submit on leave apply
 // add loading state to approve/reject buttons
+// fix: date picker min date should be today
