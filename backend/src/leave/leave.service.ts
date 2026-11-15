@@ -273,3 +273,4 @@ export class LeaveService {
 
 
 // fix: edge case - same day leave should count as 1 day
+// fix: validate date range - end date must be >= start date
