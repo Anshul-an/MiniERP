@@ -203,3 +203,4 @@ export class DashboardService {
 }
 
 // null check: handle case when no purchase requests exist
+// refactor: extract monthlySpend calculation to helper
