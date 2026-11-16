@@ -35,3 +35,4 @@ export function StatCard({ title, value, icon, color = 'blue', subtitle }: StatC
   );
 }
 // improve StatCard hover effect
+// refactor: accept icon as component prop
