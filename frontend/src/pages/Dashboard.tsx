@@ -255,3 +255,4 @@ export function Dashboard() {
 // add usePageTitle to all pages
 // fix: dashboard employee card shows correct remaining leave
 // improve: admin dashboard recent activity should be sorted
+// fix: manager dashboard shows correct dept filter
