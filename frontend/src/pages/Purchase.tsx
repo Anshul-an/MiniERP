@@ -396,3 +396,4 @@ export function Purchase() {
 // fix: clear form after successful purchase request
 // add loading state to manager approve button in purchase
 // fix: estimated cost field should accept decimal input
+// improve: quantity should be positive integer only
