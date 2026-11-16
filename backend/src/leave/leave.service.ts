@@ -276,3 +276,4 @@ export class LeaveService {
 // fix: validate date range - end date must be >= start date
 // fix: prevent employee from approving own leave
 // improve: add department filter to leave pending query
+// fix: handle concurrent leave requests correctly
