@@ -253,3 +253,4 @@ export function Dashboard() {
 // add PageHeader with subtitle to Dashboard
 // fix: recharts tooltip formatting for currency
 // add usePageTitle to all pages
+// fix: dashboard employee card shows correct remaining leave
