@@ -205,3 +205,4 @@ export class DashboardService {
 // null check: handle case when no purchase requests exist
 // refactor: extract monthlySpend calculation to helper
 // add: total spend calculation includes only APPROVED/ORDERED/RECEIVED
+// refactor: break down getAdminStats into smaller methods
