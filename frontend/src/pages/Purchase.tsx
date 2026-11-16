@@ -397,3 +397,4 @@ export function Purchase() {
 // add loading state to manager approve button in purchase
 // fix: estimated cost field should accept decimal input
 // improve: quantity should be positive integer only
+// improve: show total cost = qty * unit price
