@@ -395,3 +395,4 @@ export function Purchase() {
 // add Breadcrumb to Purchase page
 // fix: clear form after successful purchase request
 // add loading state to manager approve button in purchase
+// fix: estimated cost field should accept decimal input
