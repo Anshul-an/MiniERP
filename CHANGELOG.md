@@ -38,3 +38,30 @@ All notable changes to MiniERP will be documented in this file.
 - PostgreSQL schema with all tables and relations
 - Frontend with shadcn/ui components
 - Seed data with demo credentials
+
+## [0.2.0] - 2026-11-15
+
+### Added
+- HttpExceptionFilter for consistent error responses
+- LoggingInterceptor and TransformInterceptor
+- RequestLoggerMiddleware
+- Pagination support
+- Architecture documentation (docs/ARCHITECTURE.md)
+- API reference documentation (docs/API.md)
+- Dockerfile + docker-compose for local dev
+- CONTRIBUTING.md
+- CHANGELOG.md
+
+### Fixed
+- Leave date range validation (end >= start)
+- Prevent self-approval of leave requests
+- Dashboard spend calculation includes ordered+received status
+- Seed now uses upsert to avoid duplicate errors
+- Mobile nav closes on route change
+- Leave form - cannot pick past start date
+- Purchase form - decimal cost input, positive quantity validation
+
+### Changed
+- README updated with full deployment guide and demo credentials
+- railway.toml improved with health check configuration
+- vercel.json improved with cache headers
