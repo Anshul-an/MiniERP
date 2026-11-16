@@ -112,3 +112,4 @@ export class AuthService {
   }
 }
 
+// fix: bcrypt compare returns boolean not number
