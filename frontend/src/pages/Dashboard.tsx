@@ -254,3 +254,4 @@ export function Dashboard() {
 // fix: recharts tooltip formatting for currency
 // add usePageTitle to all pages
 // fix: dashboard employee card shows correct remaining leave
+// improve: admin dashboard recent activity should be sorted
