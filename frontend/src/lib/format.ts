@@ -27,3 +27,4 @@ export function formatRelativeTime(date: string | Date): string {
   if (days < 7) return days + ' days ago';
   return formatDate(date);
 }
+// refactor: add formatDaysCount helper
