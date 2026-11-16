@@ -55,3 +55,4 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+// a11y: add aria-disabled to loading buttons
