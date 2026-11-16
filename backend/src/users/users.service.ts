@@ -77,3 +77,4 @@ export class UsersService {
     });
   }
 }
+// fix: exclude password hash from user response
