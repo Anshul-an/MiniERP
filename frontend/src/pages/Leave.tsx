@@ -383,3 +383,4 @@ export function Leave() {
 // fix: prevent form double submit on leave apply
 // add loading state to approve/reject buttons
 // fix: date picker min date should be today
+// fix: end date min should be start date
