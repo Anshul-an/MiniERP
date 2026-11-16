@@ -277,3 +277,4 @@ export class LeaveService {
 // fix: prevent employee from approving own leave
 // improve: add department filter to leave pending query
 // fix: handle concurrent leave requests correctly
+// refactor: use const instead of let where possible
