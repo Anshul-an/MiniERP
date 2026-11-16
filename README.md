@@ -143,3 +143,4 @@ DATABASE_URL=<railway-url> npx prisma db seed
 | Admin | admin@minierp.com | Admin@123 |
 | Manager | manager1@minierp.com | Manager@123 |
 | Employee | employee1@minierp.com | Employee@123 |
+// see docs/ARCHITECTURE.md for full module breakdown
