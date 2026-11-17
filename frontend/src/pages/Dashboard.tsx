@@ -258,3 +258,4 @@ export function Dashboard() {
 // fix: manager dashboard shows correct dept filter
 // fix: recharts ResponsiveContainer needs height
 // add: last updated timestamp to dashboard
+// fix: recharts tooltip shows $ prefix
