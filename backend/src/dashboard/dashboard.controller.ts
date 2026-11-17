@@ -30,3 +30,4 @@ export class DashboardController {
     return this.dashboardService.getEmployeeDashboard(userId);
   }
 }
+// docs: add summary comment
