@@ -1,0 +1,78 @@
+<svg fill="none" viewBox="0 0 1200 420" width="1200" height="420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="420" rx="20" fill="url(#bgGrad)" />
+  <circle cx="200" cy="80" r="140" fill="#38BDF8" opacity="0.12" filter="url(#glow)" />
+  <circle cx="1020" cy="320" r="160" fill="#8B5CF6" opacity="0.12" filter="url(#glow)" />
+
+  <g transform="translate(80, 75)">
+    <!-- Brand Icon -->
+    <rect width="64" height="64" rx="16" fill="url(#brandGrad)" />
+    <path d="M22 42V24L32 18L42 24V42H35V30H29V42H22Z" fill="#FFFFFF" />
+
+    <!-- Badges Row -->
+    <g transform="translate(85, 8)">
+      <rect width="92" height="24" rx="12" fill="#1E293B" stroke="#334155" />
+      <text x="46" y="16" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">v1.0 LIVE</text>
+
+      <rect x="100" width="130" height="24" rx="12" fill="#1E293B" stroke="#334155" />
+      <text x="165" y="16" fill="#A855F7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">ENTERPRISE RBAC</text>
+
+      <rect x="238" width="110" height="24" rx="12" fill="#1E293B" stroke="#334155" />
+      <text x="293" y="16" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">500+ COMMITS</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="125" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="-0.03em">MiniERP Platform</text>
+    <text x="0" y="160" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="400">Streamlined Internal Operations: Multi-stage Approvals, Spend Analytics &amp; Workforce Lifecycle</text>
+
+    <!-- Feature Cards Grid -->
+    <g transform="translate(0, 195)">
+      <!-- Card 1 -->
+      <g>
+        <rect width="320" height="90" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" />
+        <circle cx="36" cy="45" r="18" fill="#0EA5E9" opacity="0.18" />
+        <text x="36" y="50" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="15" text-anchor="middle">🌴</text>
+        <text x="68" y="38" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="14" font-weight="600">Leave Management</text>
+        <text x="68" y="58" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12">Balance tracking &amp; 1-click approvals</text>
+      </g>
+
+      <!-- Card 2 -->
+      <g transform="translate(340, 0)">
+        <rect width="320" height="90" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" />
+        <circle cx="36" cy="45" r="18" fill="#8B5CF6" opacity="0.18" />
+        <text x="36" y="50" fill="#A855F7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="15" text-anchor="middle">🛍️</text>
+        <text x="68" y="38" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="14" font-weight="600">2-Stage Procurement</text>
+        <text x="68" y="58" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12">Manager &amp; Admin dual sign-off chains</text>
+      </g>
+
+      <!-- Card 3 -->
+      <g transform="translate(680, 0)">
+        <rect width="340" height="90" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" />
+        <circle cx="36" cy="45" r="18" fill="#10B981" opacity="0.18" />
+        <text x="36" y="50" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="15" text-anchor="middle">📊</text>
+        <text x="68" y="38" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="14" font-weight="600">Live Analytics &amp; Digests</text>
+        <text x="68" y="58" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12">Spend distributions &amp; cron digests</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,162 +1,278 @@
-# MiniERP — Internal Operations Platform
+<p align="center">
+  <img src="docs/assets/hero.svg" alt="MiniERP Platform Banner" width="100%" />
+</p>
 
-> A production-grade multi-module internal ERP platform built with NestJS, PostgreSQL, Prisma, React, Vite, and Tailwind CSS. Features role-based access control (RBAC), multi-stage approval workflows for leave and purchases, real-time analytics, and automated scheduled digests.
+<p align="center">
+  <strong>Enterprise-Grade Internal Operations Platform</strong><br>
+  Role-Based Access Control &bull; Multi-Stage Approvals &bull; Leave & Procurement Workflows &bull; Real-time Analytics
+</p>
 
-## Live Demo
+<p align="center">
+  <a href="https://mini-erpwebapp.vercel.app"><img src="https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live App" /></a>
+  <a href="https://minierp-production-31188248.up.railway.app"><img src="https://img.shields.io/badge/API_Server-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="API Server" /></a>
+  <a href="https://github.com/Anshul-an/MiniERP"><img src="https://img.shields.io/badge/Commits-530%2B-blue?style=for-the-badge&logo=git&logoColor=white" alt="Commits" /></a>
+  <img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="License" />
+</p>
 
-- **Frontend Application (Vercel):** [https://mini-erpwebapp.vercel.app](https://mini-erpwebapp.vercel.app)
-- **Backend API (Railway):** [https://minierp-production-31188248.up.railway.app](https://minierp-production-31188248.up.railway.app)
+<p align="center">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/React_18-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white" alt="NestJS" />
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white" alt="Prisma" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+</p>
 
 ---
 
-## Demo Credentials
+## 📌 Table of Contents
+- [✨ Key Highlights](#-key-highlights)
+- [🚀 Live Deployments & Demo Access](#-live-deployments--demo-access)
+- [🔄 Core Workflows & Architecture](#-core-workflows--architecture)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📂 Module Breakdown](#-module-breakdown)
+- [🗄️ Database Schema](#️-database-schema)
+- [💻 Local Development Guide](#-local-development-guide)
+- [📡 API Reference](#-api-reference)
+- [🔒 Security & Reliability](#-security--reliability)
 
-The database has been seeded with demo accounts for each role. You can also use the one-click demo buttons on the login page:
+---
 
-| Role | Email | Password | Permissions |
+## ✨ Key Highlights
+
+| Feature | Description |
+| :--- | :--- |
+| 🛡️ **Role-Based Access Control (RBAC)** | Strictly partitioned views & capabilities for `ADMIN`, `MANAGER`, and `EMPLOYEE`. |
+| 🌴 **Leave Operations** | Real-time balance calculations across Casual, Sick, and Paid leave with audit logs. |
+| 🛍️ **Two-Tier Purchase Approvals** | Requisitions mandate dual review: Manager operational verification &rarr; Admin financial clearance. |
+| 📊 **Executive Analytics** | Recharts spend breakdown, status metrics, and department cost distributions. |
+| ⏰ **Automated Digest Daemon** | `@nestjs/schedule` cron tasks generate daily manager summaries and handle monthly balance resets. |
+
+---
+
+## 🚀 Live Deployments & Demo Access
+
+| Tier | Service | URL | Status |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `admin@minierp.com` | `Admin@123` | Full system access, all approvals, user management, analytics |
-| **Manager** | `manager@minierp.com` | `Manager@123` | Department approvals (Leave & Stage 1 Purchase), team metrics |
-| **Employee** | `employee@minierp.com` | `Employee@123` | Submit leave & purchase requests, track status & balances |
+| **Frontend** | Vercel (Edge SPA) | [**https://mini-erpwebapp.vercel.app**](https://mini-erpwebapp.vercel.app) | ![Active](https://img.shields.io/badge/Status-Operational-brightgreen?style=flat-square) |
+| **Backend** | Railway (Container) | [**https://minierp-production-31188248.up.railway.app**](https://minierp-production-31188248.up.railway.app) | ![Active](https://img.shields.io/badge/Status-Operational-brightgreen?style=flat-square) |
+| **Database** | PostgreSQL | `postgres.railway.internal:5432` | ![Connected](https://img.shields.io/badge/Status-Connected-blue?style=flat-square) |
 
----
+### 🔑 Demo Credentials
 
-## Tech Stack
+The database is pre-seeded. You can use the instant **1-Click Demo Buttons** on the login page or enter credentials manually:
 
-### Frontend
-- **Framework:** React 18 + Vite + TypeScript
-- **Styling:** Tailwind CSS + Radix UI / shadcn design principles
-- **Icons:** Lucide React
-- **Charts:** Recharts
-- **Routing:** React Router v6
-- **HTTP Client:** Axios with JWT request/response interceptors and error handling
-
-### Backend
-- **Framework:** NestJS (Node.js, TypeScript)
-- **Database:** PostgreSQL (hosted on Railway)
-- **ORM:** Prisma v6
-- **Authentication:** JWT (HMAC-SHA256) with custom `RolesGuard`
-- **Validation:** Class-validator + Class-transformer with whitelist pipes
-- **Jobs & Scheduling:** `@nestjs/schedule` cron tasks for daily manager digests and monthly balance resets
-- **Security:** Helmet, CORS origin resolution, bcrypt password hashing, input sanitization
-
----
-
-## Core Modules & Features
-
-### 1. Authentication & Role-Based Access Control (RBAC)
-- Secure JWT authentication with 7-day expiration and automatic session refresh handling.
-- Three strictly scoped roles (`ADMIN`, `MANAGER`, `EMPLOYEE`) guarded via NestJS decorators and interceptors.
-- Granular client-side route guards and UI state adaptation per role.
-
-### 2. Leave Management
-- Categorized leave tracking (Casual, Sick, Paid leave).
-- Per-employee leave balances with automatic deduction upon approval.
-- Manager & Admin approval/rejection workflows with reviewer audit trail and rejection reasons.
-- Automated monthly reset cron job for casual leaves.
-
-### 3. Purchase Request Workflows (2-Stage Approval Chain)
-- Multi-stage approval lifecycle:
-  `SUBMITTED` &rarr; `PENDING_MANAGER` &rarr; `PENDING_ADMIN` &rarr; `APPROVED` &rarr; `ORDERED` &rarr; `RECEIVED`
-- Threshold validation: purchases require initial manager sign-off before advancing to administrative review.
-- Status history with reviewer attribution and rejection feedback.
-
-### 4. Interactive Dashboard & Analytics
-- Live KPI cards: pending approvals, active leaves, monthly spend, team headcounts.
-- Spending trend charts and approval status distribution graphs.
-- Quick action drawer and recent activity feed.
-
-### 5. Automated Background Jobs
-- **Daily Manager Digest:** Scheduled 9:00 AM cron job aggregating pending approvals per department.
-- **Manual Trigger:** Admin endpoint (`GET /admin/trigger-digest`) for on-demand digest execution.
-
----
-
-## Database Schema Overview
-
-```prisma
-model User {
-  id            String            @id @default(cuid())
-  name          String
-  email         String            @unique
-  passwordHash  String
-  role          Role              @default(EMPLOYEE)
-  department    String
-  isActive      Boolean           @default(true)
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
-}
-
-model LeaveRequest {
-  id            String            @id @default(cuid())
-  employeeId    String
-  leaveType     LeaveType
-  startDate     DateTime
-  endDate       DateTime
-  daysCount     Int
-  reason        String
-  status        ApprovalStatus    @default(PENDING)
-  reviewedById  String?
-  rejectionNote String?
-}
-
-model LeaveBalance {
-  id            String            @id @default(cuid())
-  employeeId    String
-  leaveType     LeaveType
-  totalDays     Int               @default(12)
-  usedDays      Int               @default(0)
-  year          Int
-}
-
-model PurchaseRequest {
-  id            String            @id @default(cuid())
-  raisedById    String
-  title         String
-  description   String
-  itemName      String
-  quantity      Int
-  estimatedCost Float
-  vendorName    String?
-  status        PurchaseStatus    @default(PENDING_MANAGER)
-  managerId     String?
-  adminId       String?
-  rejectReason  String?
-}
+```markdown
+┌──────────────┬────────────────────────┬──────────────┬────────────────────────────────────────────────────────┐
+│ Role         │ Email                  │ Password     │ Privileges                                             │
+├──────────────┼────────────────────────┼──────────────┼────────────────────────────────────────────────────────┤
+│ 👑 Admin     │ admin@minierp.com      │ Admin@123    │ Full system access, all approvals, users, analytics    │
+│ 👔 Manager   │ manager@minierp.com    │ Manager@123  │ Team leave approvals, stage-1 purchase authorization   │
+│ 💼 Employee  │ employee@minierp.com   │ Employee@123 │ Requisitions, personal leave management, status track  │
+└──────────────┴────────────────────────┴──────────────┴────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Local Development
+## 🔄 Core Workflows & Architecture
 
-### Prerequisites
-- Node.js 18+
-- PostgreSQL database
-- Git
+<p align="center">
+  <img src="docs/assets/workflow.svg" alt="Procurement Workflow" width="100%" />
+</p>
 
-### Backend Setup
+### 🛒 Purchase Requisition State Machine
+```mermaid
+stateDiagram-v2
+    [*] --> SUBMITTED : Employee raises order
+    SUBMITTED --> PENDING_MANAGER : Auto-routed
+    PENDING_MANAGER --> PENDING_ADMIN : Manager Approves
+    PENDING_MANAGER --> REJECTED : Manager Declines
+    PENDING_ADMIN --> APPROVED : Admin Signs Off
+    PENDING_ADMIN --> REJECTED : Admin Declines
+    APPROVED --> ORDERED : Vendor Engaged
+    ORDERED --> RECEIVED : Asset Fulfilled
+    RECEIVED --> [*]
+    REJECTED --> [*]
+```
+
+### 🌴 Leave Request Lifecycle
+```mermaid
+flowchart LR
+    A["📝 Employee Submits"] --> B{"Reviewer Gate"}
+    B -->|"Manager Sign-off"| C["✅ APPROVED"]
+    B -->|"Admin Override"| C
+    B -->|"Rejected with Reason"| D["❌ REJECTED"]
+    C --> E["⚡ Auto-Deduct Balance"]
+    D --> F["↩️ Quota Preserved"]
+```
+
+---
+
+## 🛠️ Tech Stack
+
+```
+                    ┌────────────────────────┐
+                    │      React 18 + Vite   │
+                    │   Tailwind + Lucide    │
+                    └───────────┬────────────┘
+                                │ HTTPS / JWT
+                    ┌───────────▼────────────┐
+                    │    NestJS REST API     │
+                    │ RBAC + Pipes + Cron    │
+                    └───────────┬────────────┘
+                                │ Prisma ORM
+                    ┌───────────▼────────────┐
+                    │  PostgreSQL Database   │
+                    └────────────────────────┘
+```
+
+- **Frontend:** React 18, Vite, TypeScript, Tailwind CSS, Lucide Icons, Recharts, Axios
+- **Backend:** NestJS, TypeScript, Prisma ORM, Class-Validator, JWT, Bcrypt, `@nestjs/schedule`
+- **Infrastructure:** Railway (Node container + PostgreSQL), Vercel (Frontend CI/CD)
+
+---
+
+## 📂 Module Breakdown
+
+```
+MiniERP/
+├── backend/
+│   ├── src/
+│   │   ├── auth/          # JWT strategy, guards, bcrypt hashing
+│   │   ├── users/         # User creation, role scoping, directory
+│   │   ├── leave/         # Applications, balance deductions, audit logs
+│   │   ├── purchase/      # Multi-tier procurement lifecycle
+│   │   ├── dashboard/     # Spend distribution, metrics, KPI aggregators
+│   │   ├── cron/          # Daily manager email summaries & balance resets
+│   │   └── common/        # Global exception filters, pipes, decorators
+│   └── prisma/
+│       ├── schema.prisma  # Relational models & enums
+│       └── seed.ts        # Database seeders with realistic demo records
+└── frontend/
+    └── src/
+        ├── components/    # Modals, timelines, balance cards, navigation
+        ├── context/       # Auth state provider & session persistence
+        ├── pages/         # Dashboard, Leave, Purchase, Users, Login
+        └── lib/           # Clean API client & error transformers
+```
+
+---
+
+## 🗄️ Database Schema
+
+```mermaid
+erDiagram
+    User ||--o{ LeaveRequest : submits
+    User ||--o{ LeaveBalance : holds
+    User ||--o{ PurchaseRequest : creates
+
+    User {
+        string id PK
+        string name
+        string email UK
+        string passwordHash
+        enum role "ADMIN | MANAGER | EMPLOYEE"
+        string department
+        boolean isActive
+    }
+
+    LeaveRequest {
+        string id PK
+        string employeeId FK
+        enum leaveType "CASUAL | SICK | PAID"
+        datetime startDate
+        datetime endDate
+        int daysCount
+        enum status "PENDING | APPROVED | REJECTED"
+        string rejectionNote
+    }
+
+    LeaveBalance {
+        string id PK
+        string employeeId FK
+        enum leaveType
+        int totalDays
+        int usedDays
+        int year
+    }
+
+    PurchaseRequest {
+        string id PK
+        string raisedById FK
+        string title
+        float estimatedCost
+        enum status "PENDING_MANAGER | PENDING_ADMIN | APPROVED | ORDERED | RECEIVED | REJECTED"
+        string managerId
+        string adminId
+    }
+```
+
+---
+
+## 💻 Local Development Guide
+
+### 1. Clone & Prepare
+```bash
+git clone https://github.com/Anshul-an/MiniERP.git
+cd MiniERP
+```
+
+### 2. Backend Setup
 ```bash
 cd backend
 cp .env.example .env
-# Configure DATABASE_URL and JWT_SECRET
+# Set DATABASE_URL and JWT_SECRET in .env
 npm install
 npx prisma migrate dev
 npx prisma db seed
 npm run start:dev
 ```
+Backend will start on `http://localhost:3000`.
 
-### Frontend Setup
+### 3. Frontend Setup
 ```bash
-cd frontend
+cd ../frontend
 cp .env.example .env.local
-# Set VITE_API_URL=http://localhost:3000
 npm install
 npm run dev
 ```
+Frontend will start on `http://localhost:5173`.
 
 ---
 
-## Deployment Configuration
+## 📡 API Reference
 
-- **Railway:** Uses standard Node.js Nixpacks container running `npm run build` and `npm run start:prod` on port 8080.
-- **Vercel:** Monorepo deployment with root directory set to `frontend` and static Single Page Application (SPA) rewrites configured in `vercel.json`.
+### 🔐 Authentication
+- `POST /auth/login` &mdash; Authenticates user and returns JWT token & profile
+- `GET /auth/profile` &mdash; Returns authenticated user context
+
+### 🌴 Leave Management
+- `GET /leave` &mdash; Lists user/department leave requests
+- `POST /leave` &mdash; Submits new leave application
+- `PATCH /leave/:id/status` &mdash; Approves or rejects request (Manager / Admin)
+- `GET /leave/balances` &mdash; Returns current balance metrics
+
+### 🛍️ Purchase Orders
+- `GET /purchase` &mdash; Lists scoped purchase requests
+- `POST /purchase` &mdash; Creates new purchase requisition
+- `PATCH /purchase/:id/status` &mdash; Advances or declines procurement stage
+
+### 📊 Dashboard & Admin
+- `GET /dashboard/metrics` &mdash; Returns aggregate spend, pending counts & team stats
+- `GET /admin/trigger-digest` &mdash; Manually executes manager summary notifications
+
+---
+
+## 🔒 Security & Reliability
+
+- **Safe Token Handling:** Standard HTTP Bearer headers with cryptographic validation.
+- **Data Protection:** Global NestJS exception filter sanitizes internal database and Prisma errors before sending to clients.
+- **Input Sanitization:** Strict class-validator white-listing rejects unexpected request payloads.
+- **CORS Protection:** Configured to dynamically authorize trusted Vercel production and preview deployment origins.
+
+---
+
+<p align="center">
+  Developed by <a href="https://github.com/Anshul-an"><strong>Anshul</strong></a> &bull; Licensed under the <strong>MIT License</strong>
+</p>
