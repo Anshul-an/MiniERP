@@ -398,3 +398,4 @@ export function Purchase() {
 // fix: estimated cost field should accept decimal input
 // improve: quantity should be positive integer only
 // improve: show total cost = qty * unit price
+// fix: typo in placeholder
