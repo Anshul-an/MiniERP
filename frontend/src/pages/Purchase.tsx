@@ -400,3 +400,4 @@ export function Purchase() {
 // improve: show total cost = qty * unit price
 // fix: typo in placeholder
 // fix: admin default tab is all requests
+// improve: success message after request created
