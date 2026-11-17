@@ -31,3 +31,4 @@ export function LeaveBalanceCard({ balance }: { balance: LeaveBalance }) {
   );
 }
 // improve LeaveBalanceCard: show progress bar
+// fix: remaining days can't be negative
