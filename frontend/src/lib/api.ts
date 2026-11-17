@@ -30,3 +30,4 @@ api.interceptors.response.use(
 export default api;
 // fix: update API base URL to include /api prefix
 // refactor: add request timeout of 10s
+// fix: withCredentials: true in axios
