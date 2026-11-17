@@ -44,3 +44,4 @@ export function useUsers() {
 
   return { users, loading, error, fetchUsers, updateRole, deactivate };
 }
+// fix: refetch users after role change
