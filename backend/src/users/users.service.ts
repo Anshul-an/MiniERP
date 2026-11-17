@@ -80,3 +80,4 @@ export class UsersService {
 // fix: exclude password hash from user response
 // perf: exclude inactive users by default
 // add: findByDepartment method
+// fix: update role validates against Role enum
