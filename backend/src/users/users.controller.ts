@@ -39,3 +39,4 @@ export class UsersController {
     return this.usersService.update(id, dto);
   }
 }
+// docs: add method descriptions
