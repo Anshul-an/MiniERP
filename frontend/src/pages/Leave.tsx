@@ -385,3 +385,4 @@ export function Leave() {
 // fix: date picker min date should be today
 // fix: end date min should be start date
 // improve: show days count preview on leave apply form
+// fix: tab key navigation works in leave form
