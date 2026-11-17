@@ -5,3 +5,4 @@ export interface JwtPayload {
   iat?: number;
   exp?: number;
 }
+// add: department to jwt payload
