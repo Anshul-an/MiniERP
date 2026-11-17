@@ -18,3 +18,4 @@ export function EmptyState({ icon, title, description, action }: EmptyStateProps
   );
 }
 // fix: EmptyState icon sizing
+// add: action button prop
