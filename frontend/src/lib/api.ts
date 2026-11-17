@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+  baseURL:
+    import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes('your-railway')
+      ? import.meta.env.VITE_API_URL
+      : 'https://minierp-production-31188248.up.railway.app',
   headers: { 'Content-Type': 'application/json' },
   timeout: 10000,
 });
