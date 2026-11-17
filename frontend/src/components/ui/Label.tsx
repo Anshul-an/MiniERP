@@ -13,3 +13,4 @@ export const Label: React.FC<LabelProps> = ({ children, required, className, ...
     {required && <span className="text-red-500 ml-0.5">*</span>}
   </label>
 );
+// add: optional marker styling
