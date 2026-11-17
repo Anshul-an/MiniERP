@@ -59,3 +59,4 @@ export const TableCell: React.FC<{ children: React.ReactNode; className?: string
 }) => (
   <td className={clsx('p-4 align-middle text-gray-900', className)}>{children}</td>
 );
+// add: striped row variant
