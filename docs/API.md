@@ -79,3 +79,9 @@ Authorization: Bearer <jwt_token>
 | 403 | Forbidden |
 | 404 | Not found |
 | 500 | Internal server error |
+
+## Authentication Flow
+
+1. POST /auth/login -> get JWT
+2. Include JWT as Bearer token in all subsequent requests
+3. JWT expires in 7 days
