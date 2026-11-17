@@ -30,3 +30,4 @@ export class HealthController {
   }
 }
 // add: version info to health response
+// add: uptime in seconds to health response
