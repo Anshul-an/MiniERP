@@ -15,3 +15,4 @@ export class CreateLeaveDto {
   @MinLength(5)
   reason: string;
 }
+// add: @IsDateString validation
