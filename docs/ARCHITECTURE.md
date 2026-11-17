@@ -65,3 +65,7 @@ PostgreSQL Database
 | Manage users | ? | ? | ? |
 
 <!-- reviewed -->
+
+## Deployment Notes
+
+See README.md for Railway and Vercel deployment.
