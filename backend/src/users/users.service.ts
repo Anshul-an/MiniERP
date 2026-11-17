@@ -82,3 +82,4 @@ export class UsersService {
 // add: findByDepartment method
 // fix: update role validates against Role enum
 // add: getUserStats method
+// final: service review complete
