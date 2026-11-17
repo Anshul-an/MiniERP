@@ -25,3 +25,4 @@ export class CreatePurchaseDto {
   vendorName?: string;
 }
 // add: @IsPositive for estimatedCost
+// improve: description min 20 chars
