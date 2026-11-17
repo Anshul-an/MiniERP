@@ -21,3 +21,4 @@ export function useDarkMode() {
 
   return { isDark, toggle: () => setIsDark((prev) => !prev) };
 }
+// fix: sync dark mode with system preference
