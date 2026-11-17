@@ -10,3 +10,4 @@ export class UpdateUserDto {
   @IsOptional()
   isActive?: boolean;
 }
+// add: @IsEnum(Role) validator
