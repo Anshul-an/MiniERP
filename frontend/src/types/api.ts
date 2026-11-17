@@ -22,3 +22,4 @@ export interface PaginatedResponse<T> {
   limit: number;
   totalPages: number;
 }
+// add: ErrorResponse type
