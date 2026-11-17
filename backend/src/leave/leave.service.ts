@@ -284,3 +284,4 @@ export class LeaveService {
 // fix: approved leave decrements correct user balance
 // add: use findByDepartment for manager scope
 // fix: recalculate days if dates changed on edit
+// fix: year filter in getMyRequests uses current year by default
