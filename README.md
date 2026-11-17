@@ -160,3 +160,5 @@ All passwords are hashed with bcrypt. JWT tokens expire in 7 days. Never commit 
 
 Test stubs are in __tests__ folders. Run with 
 pm test in backend.
+
+> Built as a portfolio project to demonstrate enterprise-grade full-stack development.
