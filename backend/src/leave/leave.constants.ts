@@ -12,3 +12,4 @@ export const MAX_SICK_LEAVE_DAYS = 12;
 export const MAX_CASUAL_LEAVE_DAYS = 10;
 export const WORKING_DAYS_PER_WEEK = 5;
 // add: LEAVE_TYPES array for validation
+// add: ANNUAL leave resets yearly not monthly
