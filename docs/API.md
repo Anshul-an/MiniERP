@@ -85,3 +85,4 @@ Authorization: Bearer <jwt_token>
 1. POST /auth/login -> get JWT
 2. Include JWT as Bearer token in all subsequent requests
 3. JWT expires in 7 days
+// reviewed
