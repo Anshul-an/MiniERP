@@ -27,3 +27,4 @@ export interface PurchaseRequest {
   manager?: { name: string };
   admin?: { name: string };
 }
+// add: PurchaseFormData interface
