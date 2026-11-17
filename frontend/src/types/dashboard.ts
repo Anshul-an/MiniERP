@@ -21,3 +21,4 @@ export interface DashboardData {
   recentLeaves?: Array<any>;
   recentPurchases?: Array<any>;
 }
+// add: ActivityItem type
