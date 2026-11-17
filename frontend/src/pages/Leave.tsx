@@ -387,3 +387,4 @@ export function Leave() {
 // improve: show days count preview on leave apply form
 // fix: tab key navigation works in leave form
 // fix: typo in label - Leve -> Leave
+// fix: tab defaults to my-history for manager
