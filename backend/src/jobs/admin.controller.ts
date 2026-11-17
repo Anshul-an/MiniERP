@@ -18,3 +18,4 @@ export class AdminController {
 }
 // improve: return success message from trigger-digest
 // fix: trigger-digest is admin-only
+// add: manual monthly reset endpoint
