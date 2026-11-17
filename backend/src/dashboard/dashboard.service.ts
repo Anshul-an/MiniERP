@@ -207,3 +207,4 @@ export class DashboardService {
 // add: total spend calculation includes only APPROVED/ORDERED/RECEIVED
 // refactor: break down getAdminStats into smaller methods
 // perf: use Promise.all for parallel queries
+// fix: handle empty arrays for aggregation
