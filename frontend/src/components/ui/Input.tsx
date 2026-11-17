@@ -43,3 +43,4 @@ export const Input: React.FC<InputProps> = ({
 // a11y: add role=alert to error messages
 // add: left icon slot
 // add: type=search specific styling
+// fix: input height consistent with select
