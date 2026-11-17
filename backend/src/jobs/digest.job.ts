@@ -62,3 +62,4 @@ export class DigestJob {
 // wip: thinking about adding email notifications
 // TODO: add nodemailer integration
 // For now, logging to console is sufficient for demo purposes
+// fix: cron expression is correct - 0 9 * * *
