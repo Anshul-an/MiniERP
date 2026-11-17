@@ -66,6 +66,6 @@
         "vitest": "^4.1.2"
     },
     "prisma": {
-        "seed": "ts-node prisma/seed.ts"
+        "seed": "ts-node -O '{\"module\":\"commonjs\"}' prisma/seed.ts"
     }
 }
