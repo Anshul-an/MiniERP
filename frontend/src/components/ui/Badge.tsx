@@ -34,3 +34,4 @@ export const Badge: React.FC<BadgeProps> = ({
   );
 };
 // add: outline variant
+// add: lg size variant
