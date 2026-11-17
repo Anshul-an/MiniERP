@@ -61,3 +61,4 @@ export const TableCell: React.FC<{ children: React.ReactNode; className?: string
 );
 // add: striped row variant
 // fix: table overflow on mobile
+// add: compact table variant
