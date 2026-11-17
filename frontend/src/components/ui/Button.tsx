@@ -56,3 +56,4 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 // a11y: add aria-disabled to loading buttons
+// add: full-width variant for form submit
