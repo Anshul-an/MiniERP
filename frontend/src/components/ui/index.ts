@@ -15,3 +15,4 @@ export {
 export { Label } from './Label';
 export { ProgressBar } from './ProgressBar';
 export { Avatar } from './Avatar';
+export { Divider } from './Divider';
