@@ -83,3 +83,4 @@ export function useAuth() {
 // minor cleanup in auth context
 // fix: clear token on 401 response in interceptor
 // fix: persist user to localStorage
+// fix: restore user from localStorage on load
