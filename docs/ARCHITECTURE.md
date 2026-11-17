@@ -69,3 +69,10 @@ PostgreSQL Database
 ## Deployment Notes
 
 See README.md for Railway and Vercel deployment.
+
+## Security
+
+- JWT tokens expire in 7 days
+- Passwords hashed with bcrypt (10 rounds)
+- Role-based guard on every protected route
+- No PII in JWT payload beyond user ID
