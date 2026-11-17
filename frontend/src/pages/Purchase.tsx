@@ -399,3 +399,4 @@ export function Purchase() {
 // improve: quantity should be positive integer only
 // improve: show total cost = qty * unit price
 // fix: typo in placeholder
+// fix: admin default tab is all requests
