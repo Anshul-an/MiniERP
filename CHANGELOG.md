@@ -67,3 +67,4 @@ All notable changes to MiniERP will be documented in this file.
 - vercel.json improved with cache headers
 
 <!-- end -->
+// v0.3.0
