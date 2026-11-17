@@ -33,3 +33,4 @@ export function StatusBadge({ status }: StatusBadgeProps) {
 // StatusBadge: add ORDERED and RECEIVED variants for purchase status
 // refactor: use lookup map instead of switch
 // add: DRAFT status badge
+// add: RECEIVED status badge
