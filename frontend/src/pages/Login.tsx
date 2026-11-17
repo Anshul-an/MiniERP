@@ -163,3 +163,4 @@ export function Login() {
 // improve error message display on login failure
 // add loading spinner to login submit button
 // fix: redirect to dashboard if already logged in
+// fix: show api error from server
