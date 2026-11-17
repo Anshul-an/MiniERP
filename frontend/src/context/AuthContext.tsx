@@ -33,9 +33,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = async (email: string, password: string) => {
+    // Normalize before sending
+    const normalizedEmail = email.trim().toLowerCase();
+    const trimmedPassword = password.trim();
+
     const response = await api.post<AuthResponse>('/auth/login', {
-      email,
-      password,
+      email: normalizedEmail,
+      password: trimmedPassword,
     });
 
     const { access_token, user: userData } = response.data;
@@ -80,7 +84,3 @@ export function useAuth() {
   }
   return context;
 }
-// minor cleanup in auth context
-// fix: clear token on 401 response in interceptor
-// fix: persist user to localStorage
-// fix: restore user from localStorage on load
