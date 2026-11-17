@@ -386,3 +386,4 @@ export function Leave() {
 // fix: end date min should be start date
 // improve: show days count preview on leave apply form
 // fix: tab key navigation works in leave form
+// fix: typo in label - Leve -> Leave
