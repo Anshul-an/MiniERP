@@ -27,3 +27,4 @@ async function bootstrap() {
 bootstrap();
 // fix: set global prefix to /api
 // log: startup message with port and env
+// fix: set cors credentials: true
