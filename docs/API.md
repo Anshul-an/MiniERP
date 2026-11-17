@@ -67,3 +67,5 @@ Authorization: Bearer <jwt_token>
 |--------|------|------|-------------|
 | GET | /health | Public | Health + DB status |
 | GET | /health/ping | Public | Ping |
+
+<!-- reviewed -->
