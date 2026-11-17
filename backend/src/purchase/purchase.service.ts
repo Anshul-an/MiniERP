@@ -267,3 +267,4 @@ export class PurchaseService {
 // refactor: extract reusable findOrFail helper
 // fix: typo approvel -> approval
 // perf: add select clause to reduce data fetch
+// fix: trim whitespace from title and desc
