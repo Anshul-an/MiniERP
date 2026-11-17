@@ -16,3 +16,4 @@ export class RequestLoggerMiddleware implements NestMiddleware {
     next();
   }
 }
+// add: skip logging for health endpoints
