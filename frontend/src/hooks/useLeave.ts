@@ -78,3 +78,4 @@ export function useLeave() {
   };
 }
 // add: refetch after apply
+// add: error state reset on new fetch
