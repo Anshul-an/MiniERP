@@ -41,3 +41,4 @@ export class HttpExceptionFilter implements ExceptionFilter {
     });
   }
 }
+// add: include path in production errors
