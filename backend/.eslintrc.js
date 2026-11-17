@@ -24,3 +24,4 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
   },
 };
+// add: no-console rule off for backend
