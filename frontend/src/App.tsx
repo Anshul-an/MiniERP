@@ -11,9 +11,10 @@ import { Users } from './pages/Users';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
           <Route path="/login" element={<Login />} />
           <Route
             path="/"
@@ -69,6 +70,7 @@ export default function App() {
         </Routes>
       </AuthProvider>
     </BrowserRouter>
+  </ErrorBoundary>
   );
 }
 

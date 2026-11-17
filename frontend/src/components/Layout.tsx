@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, CalendarDays, ShoppingCart,
@@ -9,10 +9,28 @@ import { cn } from '../lib/utils';
 
 interface LayoutProps { children: ReactNode }
 
+const SIDEBAR_KEY = 'minierp_sidebar_open';
+
 export function Layout({ children }: LayoutProps) {
   const { user, logout, isAdmin, isManager } = useAuth();
   const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    try {
+      const stored = localStorage.getItem(SIDEBAR_KEY);
+      return stored !== null ? stored === 'true' : false;
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(SIDEBAR_KEY, String(sidebarOpen));
+    } catch {
+      // ignore
+    }
+  }, [sidebarOpen]);
 
   const handleLogout = () => { logout(); navigate('/login'); };
 
@@ -31,6 +49,14 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
+      {/* Skip to main content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"
+      >
+        Skip to main content
+      </a>
+
       {/* Sidebar */}
       <aside className={cn(
         'fixed inset-y-0 left-0 z-30 w-64 bg-gray-900 text-white flex flex-col transition-transform duration-200 ease-in-out',
@@ -48,14 +74,15 @@ export function Layout({ children }: LayoutProps) {
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="ml-auto lg:hidden text-gray-400 hover:text-white"
+            className="ml-auto lg:hidden text-gray-400 hover:text-white active:scale-95 transition-all"
+            aria-label="Close navigation"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 px-3 py-4 space-y-1">
+        <nav className="flex-1 px-3 py-4 space-y-1" aria-label="Main navigation">
           {navItems.map(({ to, icon: Icon, label }) => (
             <NavLink
               key={to}
@@ -93,7 +120,7 @@ export function Layout({ children }: LayoutProps) {
           </span>
           <button
             onClick={handleLogout}
-            className="mt-2 w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-red-400 hover:bg-gray-800 rounded-xl transition-colors"
+            className="mt-2 w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-red-400 hover:bg-gray-800 rounded-xl transition-all active:scale-95"
           >
             <LogOut className="w-4 h-4" />
             Logout
@@ -106,16 +133,18 @@ export function Layout({ children }: LayoutProps) {
         <div
           className="fixed inset-0 z-20 bg-black/50 lg:hidden"
           onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
         />
       )}
 
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Topbar */}
-        <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center gap-4 shrink-0">
+        <header role="banner" className="bg-white border-b border-gray-200 px-6 py-4 flex items-center gap-4 shrink-0">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-gray-500 hover:text-gray-700"
+            className="lg:hidden text-gray-500 hover:text-gray-700 active:scale-95 transition-all"
+            aria-label="Open navigation"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -133,13 +162,10 @@ export function Layout({ children }: LayoutProps) {
         </header>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main id="main-content" role="main" className="flex-1 overflow-y-auto p-6">
           {children}
         </main>
       </div>
     </div>
   );
 }
-// add mobile responsiveness note
-// fix: close mobile nav on route change
-// fix: main content scrollable independently of sidebar
