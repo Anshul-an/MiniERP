@@ -401,3 +401,4 @@ export function Purchase() {
 // fix: typo in placeholder
 // fix: admin default tab is all requests
 // improve: success message after request created
+// fix: sort purchase requests by newest first
