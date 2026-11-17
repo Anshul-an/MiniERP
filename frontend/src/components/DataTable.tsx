@@ -83,3 +83,4 @@ export function DataTable<T>({
   );
 }
 // docs: add prop descriptions to DataTable
+// add: row selection support
