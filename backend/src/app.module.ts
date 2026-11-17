@@ -39,3 +39,4 @@ import { HealthController } from './health.controller';
 export class AppModule {}
 // global: HttpExceptionFilter registered in main.ts
 // chore: clean up module imports order
+// add: ConfigModule.forRoot is global
