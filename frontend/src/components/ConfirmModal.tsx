@@ -43,3 +43,4 @@ export function ConfirmModal({
   );
 }
 // fix: ConfirmModal button alignment
+// add: danger variant
