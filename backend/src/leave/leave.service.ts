@@ -281,3 +281,4 @@ export class LeaveService {
 // typo fix in log message
 // perf: add select clause to reduce data fetch
 // fix: dont allow leave on past dates
+// fix: approved leave decrements correct user balance
