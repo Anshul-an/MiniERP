@@ -208,3 +208,4 @@ export class DashboardService {
 // refactor: break down getAdminStats into smaller methods
 // perf: use Promise.all for parallel queries
 // fix: handle empty arrays for aggregation
+// fix: monthly chart includes current month
