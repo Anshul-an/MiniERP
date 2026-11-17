@@ -209,3 +209,4 @@ export class DashboardService {
 // perf: use Promise.all for parallel queries
 // fix: handle empty arrays for aggregation
 // fix: monthly chart includes current month
+// add: use getLeaveStats for leave summary
