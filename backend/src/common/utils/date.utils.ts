@@ -43,3 +43,4 @@ export function formatCurrency(amount: number): string {
   }).format(amount);
 }
 // add: isWeekend helper
+// add: addWorkingDays helper
