@@ -65,3 +65,5 @@ All notable changes to MiniERP will be documented in this file.
 - README updated with full deployment guide and demo credentials
 - railway.toml improved with health check configuration
 - vercel.json improved with cache headers
+
+<!-- end -->
