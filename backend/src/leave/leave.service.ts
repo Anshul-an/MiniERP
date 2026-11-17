@@ -283,3 +283,4 @@ export class LeaveService {
 // fix: dont allow leave on past dates
 // fix: approved leave decrements correct user balance
 // add: use findByDepartment for manager scope
+// fix: recalculate days if dates changed on edit
