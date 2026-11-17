@@ -14,3 +14,4 @@ export interface LeaveRequestResponse {
   employee: { id: number; name: string; email: string; department: string };
   reviewer?: { id: number; name: string } | null;
 }
+// add: LeaveApprovalResponse type
