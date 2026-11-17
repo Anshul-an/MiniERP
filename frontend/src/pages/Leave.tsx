@@ -389,3 +389,4 @@ export function Leave() {
 // fix: typo in label - Leve -> Leave
 // fix: tab defaults to my-history for manager
 // improve: success message after leave applied
+// fix: sorting my-requests by newest first
