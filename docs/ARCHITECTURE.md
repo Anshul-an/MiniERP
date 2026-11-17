@@ -83,3 +83,4 @@ See README.md for Railway and Vercel deployment.
 |----------|-------------|
 | 0 9 * * * | Daily approval digest |
 | 0 0 1 * * | Monthly leave reset |
+// reviewed
