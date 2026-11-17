@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://mini-erpwebapp.vercel.app"><img src="https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live App" /></a>
-  <a href="https://minierp-production-31188248.up.railway.app"><img src="https://img.shields.io/badge/API_Server-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="API Server" /></a>
+  <img src="https://img.shields.io/badge/Backend_API-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="Backend API" />
   <a href="https://github.com/Anshul-an/MiniERP"><img src="https://img.shields.io/badge/Commits-530%2B-blue?style=for-the-badge&logo=git&logoColor=white" alt="Commits" /></a>
   <img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="License" />
 </p>
@@ -53,11 +53,11 @@
 
 ## 🚀 Live Deployments & Demo Access
 
-| Tier | Service | URL | Status |
+| Tier | Service | Access / Endpoint | Status |
 | :--- | :--- | :--- | :--- |
 | **Frontend** | Vercel (Edge SPA) | [**https://mini-erpwebapp.vercel.app**](https://mini-erpwebapp.vercel.app) | ![Active](https://img.shields.io/badge/Status-Operational-brightgreen?style=flat-square) |
-| **Backend** | Railway (Container) | [**https://minierp-production-31188248.up.railway.app**](https://minierp-production-31188248.up.railway.app) | ![Active](https://img.shields.io/badge/Status-Operational-brightgreen?style=flat-square) |
-| **Database** | PostgreSQL | `postgres.railway.internal:5432` | ![Connected](https://img.shields.io/badge/Status-Connected-blue?style=flat-square) |
+| **Backend API** | Railway (Container) | `Production REST API (Port 8080)` | ![Active](https://img.shields.io/badge/Status-Operational-brightgreen?style=flat-square) |
+| **Database** | PostgreSQL | `Managed Cloud Database` | ![Connected](https://img.shields.io/badge/Status-Connected-blue?style=flat-square) |
 
 ### 🔑 Demo Credentials
 
