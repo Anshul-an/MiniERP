@@ -24,3 +24,4 @@ export class CreatePurchaseDto {
   @IsOptional()
   vendorName?: string;
 }
+// add: @IsPositive for estimatedCost
