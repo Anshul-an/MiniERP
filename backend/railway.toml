@@ -11,3 +11,4 @@ restartPolicyMaxRetries = 3
 
 [environments.production.variables]
 NODE_ENV = "production"
+# final config
