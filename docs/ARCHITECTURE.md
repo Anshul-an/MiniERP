@@ -76,3 +76,10 @@ See README.md for Railway and Vercel deployment.
 - Passwords hashed with bcrypt (10 rounds)
 - Role-based guard on every protected route
 - No PII in JWT payload beyond user ID
+
+## Cron Jobs
+
+| Schedule | Description |
+|----------|-------------|
+| 0 9 * * * | Daily approval digest |
+| 0 0 1 * * | Monthly leave reset |
