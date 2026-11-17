@@ -25,3 +25,4 @@ async function bootstrap() {
   logger.log('MiniERP API running on http://localhost:' + port);
 }
 bootstrap();
+// fix: set global prefix to /api
