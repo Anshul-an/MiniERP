@@ -104,3 +104,4 @@ export function usePurchase() {
   };
 }
 // add: refetch after create
+// add: error state reset on new fetch
