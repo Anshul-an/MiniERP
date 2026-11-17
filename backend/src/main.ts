@@ -7,14 +7,24 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = new Logger('Bootstrap');
 
-  const corsOrigins = process.env.CORS_ORIGIN
-    ? [process.env.CORS_ORIGIN, 'http://localhost:5173']
-    : ['http://localhost:5173', 'http://localhost:3000'];
-
   app.enableCors({
-    origin: corsOrigins,
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      const configured = process.env.CORS_ORIGIN
+        ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+        : [];
+      if (
+        configured.includes('*') ||
+        configured.includes(origin) ||
+        origin.endsWith('.vercel.app') ||
+        origin.includes('localhost')
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
     credentials: true,
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT', 'OPTIONS'],
   });
 
   app.useGlobalFilters(new HttpExceptionFilter());
@@ -32,6 +42,3 @@ async function bootstrap() {
   logger.log('MiniERP API running on http://localhost:' + port);
 }
 bootstrap();
-// fix: set global prefix to /api
-// log: startup message with port and env
-// fix: set cors credentials: true
