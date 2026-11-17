@@ -29,3 +29,8 @@ Open a GitHub Issue.
 ## Commit Style
 
 Use conventional commits: feat/fix/chore/docs/refactor/style/test
+
+## Testing
+
+Run test stubs: 
+pm test from backend directory.
