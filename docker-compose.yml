@@ -29,3 +29,4 @@ services:
 
 volumes:
   postgres_data:
+# health check for postgres
