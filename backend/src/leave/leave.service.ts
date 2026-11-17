@@ -279,3 +279,4 @@ export class LeaveService {
 // fix: handle concurrent leave requests correctly
 // refactor: use const instead of let where possible
 // typo fix in log message
+// perf: add select clause to reduce data fetch
