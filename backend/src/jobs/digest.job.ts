@@ -63,3 +63,4 @@ export class DigestJob {
 // TODO: add nodemailer integration
 // For now, logging to console is sufficient for demo purposes
 // fix: cron expression is correct - 0 9 * * *
+// fix: monthly reset uses 0 0 1 * * correctly
