@@ -44,3 +44,4 @@ export const Input: React.FC<InputProps> = ({
 // add: left icon slot
 // add: type=search specific styling
 // fix: input height consistent with select
+// add: password show/hide toggle
