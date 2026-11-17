@@ -29,3 +29,4 @@ export class HealthController {
     return { pong: true, timestamp: new Date().toISOString() };
   }
 }
+// add: version info to health response
