@@ -59,3 +59,4 @@ export const useToastContext = () => {
   if (!ctx) throw new Error('useToastContext must be used inside ToastProvider');
   return ctx;
 };
+// add: position prop
