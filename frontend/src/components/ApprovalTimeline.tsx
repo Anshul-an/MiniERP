@@ -85,3 +85,4 @@ export function ApprovalTimeline({ status }: ApprovalTimelineProps) {
 }
 // fix: approval timeline shows correct step for ORDERED status
 // refactor: timeline steps derived from constants
+// improve: add timestamps to timeline steps
