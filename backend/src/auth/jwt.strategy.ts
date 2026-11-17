@@ -1,1 +1,1 @@
-// refactor: add logging for failed auth attempts
+export * from './strategies/jwt.strategy';

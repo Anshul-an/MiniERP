@@ -18,8 +18,9 @@ export class AuthService {
   ) {}
 
   async login(dto: LoginDto) {
+    const email = dto.email.toLowerCase().trim();
     const user = await this.prisma.user.findUnique({
-      where: { email: dto.email },
+      where: { email },
     });
 
     if (!user) {
@@ -51,8 +52,11 @@ export class AuthService {
   }
 
   async register(dto: RegisterDto) {
+    const name = dto.name.normalize('NFC').trim();
+    const email = dto.email.toLowerCase().trim();
+
     const existingUser = await this.prisma.user.findUnique({
-      where: { email: dto.email },
+      where: { email },
     });
 
     if (existingUser) {
@@ -63,11 +67,11 @@ export class AuthService {
 
     const user = await this.prisma.user.create({
       data: {
-        name: dto.name,
-        email: dto.email,
+        name,
+        email,
         passwordHash: hashedPassword,
         role: dto.role || 'EMPLOYEE',
-        department: dto.department,
+        department: dto.department.trim(),
       },
     });
 

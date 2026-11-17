@@ -1,1 +1,1 @@
-// refactor: renamed eq to equest for clarity in guards
+export * from './guards/roles.guard';

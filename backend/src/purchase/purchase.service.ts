@@ -27,7 +27,7 @@ export class PurchaseService {
     const allowed = this.validTransitions[current];
     if (!allowed.includes(next)) {
       throw new BadRequestException(
-        Cannot transition from +current+ to +next,
+        `Cannot transition from ${current} to ${next}`,
       );
     }
   }

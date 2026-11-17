@@ -70,7 +70,7 @@ export class LeaveService {
     const remaining = balance.totalDays - balance.usedDays;
     if (remaining < daysCount) {
       throw new BadRequestException(
-        Insufficient leave balance. Available: +remaining+ days, Requested: +daysCount+ days,
+        `Insufficient leave balance. Available: ${remaining} days, Requested: ${daysCount} days`,
       );
     }
 
