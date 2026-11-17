@@ -278,3 +278,4 @@ export class LeaveService {
 // improve: add department filter to leave pending query
 // fix: handle concurrent leave requests correctly
 // refactor: use const instead of let where possible
+// typo fix in log message
