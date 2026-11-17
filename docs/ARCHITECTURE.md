@@ -63,3 +63,5 @@ PostgreSQL Database
 | Manager approve | ? | ? | ? |
 | Admin approve | ? | ? | ? |
 | Manage users | ? | ? | ? |
+
+<!-- reviewed -->
