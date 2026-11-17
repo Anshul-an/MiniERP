@@ -206,3 +206,4 @@ export class DashboardService {
 // refactor: extract monthlySpend calculation to helper
 // add: total spend calculation includes only APPROVED/ORDERED/RECEIVED
 // refactor: break down getAdminStats into smaller methods
+// perf: use Promise.all for parallel queries
