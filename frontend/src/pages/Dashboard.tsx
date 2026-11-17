@@ -261,3 +261,4 @@ export function Dashboard() {
 // fix: recharts tooltip shows $ prefix
 // fix: stat cards show 0 not NaN when data empty
 // fix: recharts x-axis labels truncated
+// final: page review complete
