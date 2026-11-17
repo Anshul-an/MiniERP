@@ -282,3 +282,4 @@ export class LeaveService {
 // perf: add select clause to reduce data fetch
 // fix: dont allow leave on past dates
 // fix: approved leave decrements correct user balance
+// add: use findByDepartment for manager scope
