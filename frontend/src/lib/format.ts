@@ -30,3 +30,4 @@ export function formatRelativeTime(date: string | Date): string {
 // refactor: add formatDaysCount helper
 // add: formatNumber with locale
 // add: formatPercent helper
+// add: formatDuration helper
