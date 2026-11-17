@@ -25,3 +25,7 @@ See README.md for the full folder structure.
 ## Questions?
 
 Open a GitHub Issue.
+
+## Commit Style
+
+Use conventional commits: feat/fix/chore/docs/refactor/style/test
