@@ -210,3 +210,4 @@ export class DashboardService {
 // fix: handle empty arrays for aggregation
 // fix: monthly chart includes current month
 // add: use getLeaveStats for leave summary
+// final: service review complete
