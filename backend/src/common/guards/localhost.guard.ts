@@ -15,3 +15,4 @@ export class LocalhostGuard implements CanActivate {
     return ip === '127.0.0.1' || ip === '::1' || process.env.NODE_ENV !== 'production';
   }
 }
+// add: allow in test env
