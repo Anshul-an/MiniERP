@@ -259,3 +259,4 @@ export function Dashboard() {
 // fix: recharts ResponsiveContainer needs height
 // add: last updated timestamp to dashboard
 // fix: recharts tooltip shows $ prefix
+// fix: stat cards show 0 not NaN when data empty
