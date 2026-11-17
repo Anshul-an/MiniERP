@@ -28,3 +28,4 @@ export function formatRelativeTime(date: string | Date): string {
   return formatDate(date);
 }
 // refactor: add formatDaysCount helper
+// add: formatNumber with locale
