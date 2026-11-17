@@ -50,3 +50,4 @@ export const CardFooter: React.FC<{ children: React.ReactNode; className?: strin
 );
 // add: CardDescription subcomponent
 // fix: card shadow on focus-within
+// add: ghost card variant
