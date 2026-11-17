@@ -269,3 +269,4 @@ export class PurchaseService {
 // perf: add select clause to reduce data fetch
 // fix: trim whitespace from title and desc
 // fix: rejected purchase does not change total spend
+// fix: estimated_cost cannot be negative
