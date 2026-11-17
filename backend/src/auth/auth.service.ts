@@ -114,3 +114,4 @@ export class AuthService {
 
 // fix: bcrypt compare returns boolean not number
 // fix: use safe error messages - no user enumeration
+// improve: normalize email to lowercase on login
