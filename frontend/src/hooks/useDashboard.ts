@@ -26,3 +26,4 @@ export function useDashboard() {
 
   return { data, loading, error, refetch: fetchDashboard };
 }
+// add: polling every 60s for live stats
