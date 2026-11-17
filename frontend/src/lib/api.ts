@@ -1,10 +1,18 @@
 import axios from 'axios';
 
+function getBaseUrl(): string {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (typeof envUrl === 'string') {
+    const match = envUrl.match(/https?:\/\/[^\s"'`]+/);
+    if (match && !match[0].includes('your-railway')) {
+      return match[0].replace(/\/$/, '');
+    }
+  }
+  return 'https://minierp-production-31188248.up.railway.app';
+}
+
 const api = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes('your-railway')
-      ? import.meta.env.VITE_API_URL
-      : 'https://minierp-production-31188248.up.railway.app',
+  baseURL: getBaseUrl(),
   headers: { 'Content-Type': 'application/json' },
   timeout: 10000,
 });
