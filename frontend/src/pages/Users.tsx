@@ -132,3 +132,4 @@ export function Users() {
 // refactor: use DataTable in Users page
 // fix: handle undefined user in Users page
 // improve: show department in user table
+// improve: confirm before deactivating user
