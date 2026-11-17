@@ -22,3 +22,4 @@ export const PURCHASE_STATUS_STEPS: PurchaseStatusStep[] = [
   { status: 'RECEIVED', label: 'Received', order: 5 },
 ];
 // add: REJECTED step in status steps
+// add: PurchaseApprovalResponse type
