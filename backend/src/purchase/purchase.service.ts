@@ -266,3 +266,4 @@ export class PurchaseService {
 // fix: status check before marking as ordered
 // refactor: extract reusable findOrFail helper
 // fix: typo approvel -> approval
+// perf: add select clause to reduce data fetch
