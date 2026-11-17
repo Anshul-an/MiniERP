@@ -40,3 +40,4 @@ export const Textarea: React.FC<TextareaProps> = ({
     </div>
   );
 };
+// fix: auto-resize on content
