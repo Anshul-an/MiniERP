@@ -133,3 +133,4 @@ export function Users() {
 // fix: handle undefined user in Users page
 // improve: show department in user table
 // improve: confirm before deactivating user
+// fix: sort users alphabetically
