@@ -280,3 +280,4 @@ export class LeaveService {
 // refactor: use const instead of let where possible
 // typo fix in log message
 // perf: add select clause to reduce data fetch
+// fix: dont allow leave on past dates
