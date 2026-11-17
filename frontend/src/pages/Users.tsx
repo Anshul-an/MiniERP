@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Users as UsersIcon, Shield, UserCheck, UserX } from 'lucide-react';
-import { StatusBadge } from '../components/StatusBadge';
+ï»¿import { useEffect, useState } from 'react';
+import { Users as UsersIcon, UserCheck, UserX } from 'lucide-react';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import api from '../lib/api';
 import type { User } from '../types';
+import { cn } from '../lib/utils';
 
 export function Users() {
   const [users, setUsers] = useState<User[]>([]);
@@ -41,11 +41,7 @@ export function Users() {
     }
   };
 
-  const roleBadgeColor: Record<string, string> = {
-    ADMIN: 'bg-purple-100 text-purple-700',
-    MANAGER: 'bg-blue-100 text-blue-700',
-    EMPLOYEE: 'bg-green-100 text-green-700',
-  };
+
 
   if (loading) return <div className="flex justify-center py-20"><LoadingSpinner size="lg" /></div>;
 
@@ -53,7 +49,7 @@ export function Users() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
-        <p className="text-gray-500 text-sm mt-1">{users.length} total users · Manage roles and account status</p>
+        <p className="text-gray-500 text-sm mt-1">{users.length} total users ï¿½ Manage roles and account status</p>
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -99,23 +95,30 @@ export function Users() {
                   </td>
                   <td className="px-6 py-4 text-gray-600">{user.department}</td>
                   <td className="px-6 py-4">
-                    <span className={inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium +
-                      (user.isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500')}>
+                    <span
+                      className={cn(
+                        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium',
+                        user.isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                      )}
+                    >
                       {user.isActive ? (
-                        <><UserCheck className="w-3 h-3" /> Active</>
+                        <><UserCheck className="w-3.5 h-3.5" /> Active</>
                       ) : (
-                        <><UserX className="w-3 h-3" /> Inactive</>
+                        <><UserX className="w-3.5 h-3.5" /> Inactive</>
                       )}
                     </span>
                   </td>
                   <td className="px-6 py-4">
                     <button
+                      type="button"
                       onClick={() => handleToggleActive(user.id, user.isActive ?? true)}
                       disabled={updating === user.id}
-                      className={px-3 py-1.5 text-xs font-medium rounded-lg transition-colors disabled:opacity-50 +
-                        (user.isActive
+                      className={cn(
+                        'min-h-[44px] min-w-[44px] px-3 py-1.5 text-xs font-medium rounded-lg transition-all active:scale-95 disabled:opacity-50',
+                        user.isActive
                           ? 'bg-red-50 text-red-700 hover:bg-red-100 border border-red-200'
-                          : 'bg-green-50 text-green-700 hover:bg-green-100 border border-green-200')}
+                          : 'bg-green-50 text-green-700 hover:bg-green-100 border border-green-200'
+                      )}
                     >
                       {updating === user.id ? '...' : (user.isActive ? 'Deactivate' : 'Activate')}
                     </button>

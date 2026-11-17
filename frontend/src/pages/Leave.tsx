@@ -1,6 +1,5 @@
-import { formatDate } from '../lib/format';
-import { useEffect, useState, FormEvent } from 'react';
-import { CalendarDays, Send, Clock, CheckCircle, XCircle, Info } from 'lucide-react';
+ï»¿import { useEffect, useState, FormEvent } from 'react';
+import { CalendarDays, Send, CheckCircle, XCircle } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { StatusBadge } from '../components/StatusBadge';
 import { EmptyState } from '../components/EmptyState';
@@ -8,6 +7,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner';
 import { Modal } from '../components/Modal';
 import api from '../lib/api';
 import type { LeaveRequest, LeaveBalance } from '../types';
+import { cn } from '../lib/utils';
 
 type Tab = 'apply' | 'my-history' | 'approvals';
 
@@ -106,11 +106,11 @@ export function Leave() {
     }
   };
 
-  const tabs: { key: Tab; label: string; show: boolean }[] = [
-    { key: 'apply', label: 'Apply for Leave', show: true },
-    { key: 'my-history', label: 'My History', show: true },
-    { key: 'approvals', label: 'Team Approvals', show: isAdmin || isManager },
-  ].filter(t => t.show);
+  const tabs = [
+    { key: 'apply' as Tab, label: 'Apply for Leave', show: true },
+    { key: 'my-history' as Tab, label: 'My History', show: true },
+    { key: 'approvals' as Tab, label: 'Team Approvals', show: isAdmin || isManager },
+  ].filter((t): t is { key: Tab; label: string; show: boolean } => Boolean(t.show));
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -127,9 +127,10 @@ export function Leave() {
           <button
             key={t.key}
             onClick={() => setTab(t.key)}
-            className={px-4 py-2 rounded-lg text-sm font-medium transition-colors +
-              (tab === t.key ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900')
-            }
+            className={cn(
+              'min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-all active:scale-95',
+              tab === t.key ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+            )}
           >
             {t.label}
           </button>
@@ -265,7 +266,7 @@ export function Leave() {
                       </td>
                       <td className="px-6 py-4 text-gray-700">
                         {new Date(req.startDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
-                        {' – '}
+                        {' ï¿½ '}
                         {new Date(req.endDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' })}
                       </td>
                       <td className="px-6 py-4 font-medium text-gray-900">{req.daysCount}</td>
@@ -312,15 +313,15 @@ export function Leave() {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-semibold text-gray-900">{req.employee?.name}</span>
-                      <span className="text-gray-400">·</span>
+                      <span className="text-gray-400">ï¿½</span>
                       <span className="text-sm text-gray-500">{req.employee?.department}</span>
                       <StatusBadge status={req.leaveType} />
                     </div>
                     <p className="text-sm text-gray-600 mb-2">
                       {new Date(req.startDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
-                      {' – '}
+                      {' ï¿½ '}
                       {new Date(req.endDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' })}
-                      {' · '}
+                      {' ï¿½ '}
                       <strong>{req.daysCount} working days</strong>
                     </p>
                     <p className="text-sm text-gray-500 italic">"{req.reason}"</p>

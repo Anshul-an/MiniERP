@@ -1,6 +1,5 @@
-import { formatCurrency, formatDate } from '../lib/format';
-import { useEffect, useState, FormEvent } from 'react';
-import { ShoppingCart, Send, CheckCircle, XCircle, Package } from 'lucide-react';
+ï»¿import { useEffect, useState, FormEvent } from 'react';
+import { ShoppingCart, Send, CheckCircle, XCircle } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { StatusBadge } from '../components/StatusBadge';
 import { ApprovalTimeline } from '../components/ApprovalTimeline';
@@ -9,6 +8,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner';
 import { Modal } from '../components/Modal';
 import api from '../lib/api';
 import type { PurchaseRequest } from '../types';
+import { cn } from '../lib/utils';
 
 type Tab = 'new' | 'my-requests' | 'approve' | 'all';
 
@@ -119,12 +119,12 @@ export function Purchase() {
     finally { setActionLoading(false); }
   };
 
-  const tabs: { key: Tab; label: string; show: boolean }[] = [
-    { key: 'new', label: 'New Request', show: true },
-    { key: 'my-requests', label: 'My Requests', show: true },
-    { key: 'approve', label: 'Approve Queue', show: isAdmin || isManager },
-    { key: 'all', label: 'All Requests', show: isAdmin },
-  ].filter(t => t.show);
+  const tabs = [
+    { key: 'new' as Tab, label: 'New Request', show: true },
+    { key: 'my-requests' as Tab, label: 'My Requests', show: true },
+    { key: 'approve' as Tab, label: 'Approve Queue', show: isAdmin || isManager },
+    { key: 'all' as Tab, label: 'All Requests', show: isAdmin },
+  ].filter((t): t is { key: Tab; label: string; show: boolean } => Boolean(t.show));
 
   const totalSpend = allRequests
     .filter(r => ['APPROVED', 'ORDERED', 'RECEIVED'].includes(r.status))
@@ -141,9 +141,14 @@ export function Purchase() {
 
       <div className="flex gap-1 p-1 bg-gray-100 rounded-xl w-fit">
         {tabs.map(t => (
-          <button key={t.key} onClick={() => setTab(t.key)}
-            className={px-4 py-2 rounded-lg text-sm font-medium transition-colors +
-              (tab === t.key ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900')}>
+          <button
+            key={t.key}
+            onClick={() => setTab(t.key)}
+            className={cn(
+              'min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-all active:scale-95',
+              tab === t.key ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+            )}
+          >
             {t.label}
           </button>
         ))}
@@ -224,7 +229,7 @@ export function Purchase() {
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h3 className="font-semibold text-gray-900">{req.title}</h3>
-                      <p className="text-sm text-gray-500 mt-0.5">{req.itemName} × {req.quantity} · ?{req.estimatedCost.toLocaleString('en-IN')}</p>
+                      <p className="text-sm text-gray-500 mt-0.5">{req.itemName} ï¿½ {req.quantity} ï¿½ ?{req.estimatedCost.toLocaleString('en-IN')}</p>
                     </div>
                     <StatusBadge status={req.status} />
                   </div>
@@ -262,7 +267,7 @@ export function Purchase() {
                         <StatusBadge status={req.status} />
                       </div>
                       <p className="text-sm text-gray-500 mb-2">
-                        {req.raisedBy?.name} · {req.raisedBy?.department} · {req.itemName} × {req.quantity}
+                        {req.raisedBy?.name} ï¿½ {req.raisedBy?.department} ï¿½ {req.itemName} ï¿½ {req.quantity}
                       </p>
                       <p className="text-sm text-gray-600 mb-1">{req.description}</p>
                       <p className="text-lg font-bold text-gray-900">?{req.estimatedCost.toLocaleString('en-IN')}</p>
@@ -343,7 +348,7 @@ export function Purchase() {
                     <tr key={req.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4 font-medium text-gray-900 max-w-xs truncate">{req.title}</td>
                       <td className="px-6 py-4 text-gray-600">{req.raisedBy?.name}<br/><span className="text-xs text-gray-400">{req.raisedBy?.department}</span></td>
-                      <td className="px-6 py-4 text-gray-600">{req.itemName} × {req.quantity}</td>
+                      <td className="px-6 py-4 text-gray-600">{req.itemName} ï¿½ {req.quantity}</td>
                       <td className="px-6 py-4 font-medium text-gray-900">?{req.estimatedCost.toLocaleString('en-IN')}</td>
                       <td className="px-6 py-4"><StatusBadge status={req.status} /></td>
                       <td className="px-6 py-4 text-gray-500">{new Date(req.createdAt).toLocaleDateString('en-IN')}</td>

@@ -1,7 +1,8 @@
-import { useState, FormEvent } from 'react';
+ï»¿import { useState, FormEvent, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Building2, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import { getErrorMessage } from '../lib/api';
 
 export function Login() {
   const navigate = useNavigate();
@@ -11,17 +12,33 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const submitTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (loading) return;
+
+    // Debounce: prevent rapid double submits
+    if (submitTimeout.current) return;
+    submitTimeout.current = setTimeout(() => {
+      submitTimeout.current = null;
+    }, 500);
+
     setError('');
     setLoading(true);
 
     try {
-      await login(email, password);
+      const trimmedEmail = email.trim().toLowerCase();
+      const trimmedPassword = password.trim();
+      await login(trimmedEmail, trimmedPassword);
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err?.response?.data?.message || 'Invalid credentials. Please try again.');
+      const msg = getErrorMessage(err);
+      setError(
+        msg.includes('Session expired') || msg.includes('Invalid request')
+          ? 'Invalid credentials -- check your email and password, then try again.'
+          : msg
+      );
     } finally {
       setLoading(false);
     }
@@ -47,33 +64,30 @@ export function Login() {
           </div>
           <span className="text-2xl font-bold text-white">MiniERP</span>
         </div>
-
         <div>
           <h1 className="text-4xl font-bold text-white leading-tight mb-4">
             Internal Operations Platform
           </h1>
           <p className="text-gray-400 text-lg leading-relaxed">
-            Manage leave requests, purchase approvals, and team operations — all in one place.
+            Manage leave requests, purchase approvals, and team operations all in one place.
           </p>
-
           <div className="mt-10 space-y-4">
             {[
-              { icon: 'Role-based access control', desc: 'Admin, Manager, Employee views' },
-              { icon: 'Multi-stage approval chains', desc: 'Leave & purchase workflows' },
-              { icon: 'Real-time dashboards', desc: 'Charts, stats, activity feeds' },
+              { label: 'Role-based access control', desc: 'Admin, Manager, Employee views' },
+              { label: 'Multi-stage approval chains', desc: 'Leave & purchase workflows' },
+              { label: 'Real-time dashboards', desc: 'Charts, stats, activity feeds' },
             ].map((f, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
                 <div>
-                  <span className="text-white font-medium">{f.icon}</span>
-                  <span className="text-gray-400"> — {f.desc}</span>
+                  <span className="text-white font-medium">{f.label}</span>
+                  <span className="text-gray-400"> - {f.desc}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        <p className="text-gray-600 text-sm">MiniERP v1.0 · Built for StrainX</p>
+        <p className="text-gray-600 text-sm">MiniERP v1.0 - Built for StrainX</p>
       </div>
 
       {/* Right panel */}
@@ -91,42 +105,59 @@ export function Login() {
             <p className="text-gray-500 text-sm mb-6">Enter your credentials to access the platform</p>
 
             {error && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700 text-sm">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                {error}
+              <div
+                className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2 text-red-700 text-sm"
+                role="alert"
+              >
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                <span>{error}</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+                <label htmlFor="login-email" className="block text-sm font-medium text-gray-700 mb-1.5">
+                  Email
+                </label>
                 <input
+                  id="login-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onBlur={(e) => setEmail(e.target.value.trim().toLowerCase())}
                   required
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                  autoComplete="email"
+                  className="w-full h-11 px-4 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
                   placeholder="you@company.com"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+                <label htmlFor="login-password" className="block text-sm font-medium text-gray-700 mb-1.5">
+                  Password
+                </label>
                 <div className="relative">
                   <input
+                    id="login-password"
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-                    placeholder="••••••••"
+                    autoComplete="current-password"
+                    className="w-full h-11 px-4 pr-11 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                    placeholder="********"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 active:scale-95 transition-all"
                   >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showPassword ? (
+                      <EyeOff className="w-4 h-4" aria-hidden="true" />
+                    ) : (
+                      <Eye className="w-4 h-4" aria-hidden="true" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -134,20 +165,21 @@ export function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                className="w-full h-11 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 text-sm"
               >
                 {loading ? 'Signing in...' : 'Sign in'}
               </button>
             </form>
 
             <div className="mt-6 pt-5 border-t border-gray-100">
-              <p className="text-xs text-gray-500 mb-3 font-medium uppercase tracking-wider">Demo accounts</p>
+              <p className="text-sm text-gray-500 mb-3">Try a demo account:</p>
               <div className="grid grid-cols-3 gap-2">
                 {(['admin', 'manager', 'employee'] as const).map((role) => (
                   <button
                     key={role}
                     onClick={() => fillDemo(role)}
-                    className="py-2 px-3 text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors capitalize"
+                    type="button"
+                    className="py-2 px-3 h-11 min-h-[44px] text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all active:scale-95 capitalize"
                   >
                     {role}
                   </button>
@@ -160,8 +192,3 @@ export function Login() {
     </div>
   );
 }
-// improve error message display on login failure
-// add loading spinner to login submit button
-// fix: redirect to dashboard if already logged in
-// fix: show api error from server
-// final: page review complete

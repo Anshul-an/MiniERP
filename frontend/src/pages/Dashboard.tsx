@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+ï»¿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Users, CalendarDays, ShoppingCart, TrendingUp,
-  Clock, CheckCircle, XCircle, AlertCircle, Plus
+  Clock, Plus
 } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -10,9 +10,9 @@ import {
 } from 'recharts';
 import { useAuth } from '../hooks/useAuth';
 import { StatCard } from '../components/StatCard';
-import { LoadingSpinner } from '../components/LoadingSpinner';
 import { LeaveBalanceCard } from '../components/LeaveBalanceCard';
 import { StatusBadge } from '../components/StatusBadge';
+import { Skeleton } from '../components/LoadingSpinner';
 import api from '../lib/api';
 import type { DashboardData } from '../types';
 
@@ -24,14 +24,39 @@ function formatMonth(m: string) {
 }
 
 function formatCurrency(n: number) {
-  if (n >= 100000) return '?' + (n / 100000).toFixed(1) + 'L';
-  if (n >= 1000) return '?' + (n / 1000).toFixed(0) + 'K';
-  return '?' + n;
+  if (n >= 100000) return 'Rs.' + (n / 100000).toFixed(1) + 'L';
+  if (n >= 1000) return 'Rs.' + (n / 1000).toFixed(0) + 'K';
+  return 'Rs.' + n;
+}
+
+function DashboardSkeleton() {
+  return (
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <Skeleton height="h-7" width="w-48" />
+        <Skeleton height="h-4" width="w-64" />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        {[0, 1, 2, 3].map((i) => (
+          <StatCard key={i} title="" value="" loading />
+        ))}
+      </div>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div className="xl:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
+          <Skeleton height="h-5" width="w-40" className="mb-4" />
+          <Skeleton height="h-56" />
+        </div>
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <Skeleton height="h-5" width="w-32" className="mb-4" />
+          <Skeleton height="h-56" />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function Dashboard() {
-  const { isAdmin, isManager, isEmployee, user } = useAuth();
-  // set page title based on role
+  const { isAdmin, isManager, user } = useAuth();
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -52,8 +77,8 @@ export function Dashboard() {
     fetchDashboard();
   }, [isAdmin, isManager]);
 
-  if (loading) return <div className="flex justify-center py-20"><LoadingSpinner size="lg" /></div>;
-  if (!data) return <div className="text-center py-20 text-gray-500">Failed to load dashboard</div>;
+  if (loading) return <DashboardSkeleton />;
+  if (!data) return <div className="text-center py-20 text-gray-500">Failed to load dashboard data. Try refreshing the page.</div>;
 
   // ======== ADMIN DASHBOARD ========
   if (isAdmin) {
@@ -87,7 +112,6 @@ export function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          {/* Bar chart */}
           <div className="xl:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-base font-semibold text-gray-900 mb-4">Monthly Purchase Spend</h2>
             {monthlyData.length > 0 ? (
@@ -96,16 +120,15 @@ export function Dashboard() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                   <XAxis dataKey="month" tick={{ fontSize: 12 }} />
                   <YAxis tick={{ fontSize: 12 }} tickFormatter={(v) => formatCurrency(v)} />
-                  <Tooltip formatter={(v: number) => [formatCurrency(v), 'Spend']} />
+                  <Tooltip formatter={(v: any) => [formatCurrency(Number(v) || 0), 'Spend']} />
                   <Bar dataKey="spend" fill="#3b82f6" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-60 flex items-center justify-center text-gray-400">No spend data yet</div>
+              <div className="h-60 flex items-center justify-center text-gray-400 text-sm">No spend data yet</div>
             )}
           </div>
 
-          {/* Donut chart */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-base font-semibold text-gray-900 mb-4">Leave by Type</h2>
             {leaveData.length > 0 ? (
@@ -119,12 +142,11 @@ export function Dashboard() {
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-60 flex items-center justify-center text-gray-400">No leave data</div>
+              <div className="h-60 flex items-center justify-center text-gray-400 text-sm">No leave data</div>
             )}
           </div>
         </div>
 
-        {/* Recent activity */}
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <h2 className="text-base font-semibold text-gray-900 mb-4">Recent Activity</h2>
           <div className="space-y-3">
@@ -159,7 +181,7 @@ export function Dashboard() {
       <div className="space-y-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Manager Dashboard</h1>
-          <p className="text-gray-500 text-sm mt-1">{data.department} Department · {data.teamSize} team members</p>
+          <p className="text-gray-500 text-sm mt-1">{data.department} Department - {data.teamSize} team members</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -192,7 +214,7 @@ export function Dashboard() {
                 {(data.teamLeaveCalendar || []).map((leave: any, i: number) => (
                   <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-gray-50 text-sm">
                     <span className="font-medium text-gray-700">{leave.employee?.name}</span>
-                    <span className="text-gray-500">{leave.daysCount} days · {leave.leaveType.toLowerCase()}</span>
+                    <span className="text-gray-500">{leave.daysCount} days - {leave.leaveType.toLowerCase()}</span>
                   </div>
                 ))}
               </div>
@@ -208,7 +230,7 @@ export function Dashboard() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Welcome back, {user?.name?.split(' ')[0]}</h1>
-        <p className="text-gray-500 text-sm mt-1">{user?.department} · {user?.role}</p>
+        <p className="text-gray-500 text-sm mt-1">{user?.department} - {user?.role}</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -230,14 +252,14 @@ export function Dashboard() {
         <div className="flex flex-wrap gap-3">
           <Link
             to="/leave"
-            className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 h-11 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition-all active:scale-95"
           >
             <Plus className="w-4 h-4" />
             Apply for Leave
           </Link>
           <Link
             to="/purchase"
-            className="flex items-center gap-2 px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-xl transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 h-11 min-h-[44px] bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-xl transition-all active:scale-95"
           >
             <Plus className="w-4 h-4" />
             New Purchase Request
@@ -247,18 +269,3 @@ export function Dashboard() {
     </div>
   );
 }
-
-// dashboard charts should be responsive - wrap in ResponsiveContainer
-// fix: show empty state when no data in charts
-// add PageHeader with subtitle to Dashboard
-// fix: recharts tooltip formatting for currency
-// add usePageTitle to all pages
-// fix: dashboard employee card shows correct remaining leave
-// improve: admin dashboard recent activity should be sorted
-// fix: manager dashboard shows correct dept filter
-// fix: recharts ResponsiveContainer needs height
-// add: last updated timestamp to dashboard
-// fix: recharts tooltip shows $ prefix
-// fix: stat cards show 0 not NaN when data empty
-// fix: recharts x-axis labels truncated
-// final: page review complete
