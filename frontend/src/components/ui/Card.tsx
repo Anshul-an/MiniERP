@@ -49,3 +49,4 @@ export const CardFooter: React.FC<{ children: React.ReactNode; className?: strin
   <div className={clsx('flex items-center p-6 pt-0', className)}>{children}</div>
 );
 // add: CardDescription subcomponent
+// fix: card shadow on focus-within
