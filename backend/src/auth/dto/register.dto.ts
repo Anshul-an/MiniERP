@@ -19,3 +19,4 @@ export class RegisterDto {
   @IsString()
   department: string;
 }
+// add: @MinLength(8) for password
