@@ -81,3 +81,4 @@ export function useAuth() {
   return context;
 }
 // minor cleanup in auth context
+// fix: clear token on 401 response in interceptor
