@@ -257,3 +257,4 @@ export function Dashboard() {
 // improve: admin dashboard recent activity should be sorted
 // fix: manager dashboard shows correct dept filter
 // fix: recharts ResponsiveContainer needs height
+// add: last updated timestamp to dashboard
