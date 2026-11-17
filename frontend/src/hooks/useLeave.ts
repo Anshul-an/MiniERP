@@ -77,3 +77,4 @@ export function useLeave() {
     rejectLeave,
   };
 }
+// add: refetch after apply
