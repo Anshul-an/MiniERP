@@ -265,3 +265,4 @@ export class PurchaseService {
 // fix: check request belongs to dept before manager approval
 // fix: status check before marking as ordered
 // refactor: extract reusable findOrFail helper
+// fix: typo approvel -> approval
