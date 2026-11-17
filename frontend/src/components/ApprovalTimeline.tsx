@@ -1,5 +1,6 @@
 import { Check, X, Clock } from 'lucide-react';
 import type { PurchaseStatus } from '../types';
+import { cn } from '../lib/utils';
 
 interface ApprovalTimelineProps {
   status: PurchaseStatus;
@@ -26,17 +27,12 @@ function getStepIndex(status: PurchaseStatus): number {
   }
 }
 
-function getRejectedAt(status: PurchaseStatus): number {
-  if (status !== 'REJECTED') return -1;
-  return -1;
-}
-
 export function ApprovalTimeline({ status }: ApprovalTimelineProps) {
   const currentStep = getStepIndex(status);
   const isRejected = status === 'REJECTED';
 
   return (
-    <div className="flex items-center gap-1 w-full">
+    <div className="flex items-center gap-1 w-full" aria-label="Approval timeline">
       {steps.map((step, index) => {
         const isDone = currentStep > index;
         const isCurrent = currentStep === index + 1;
@@ -46,22 +42,23 @@ export function ApprovalTimeline({ status }: ApprovalTimelineProps) {
           <div key={step.key} className="flex items-center flex-1">
             <div className="flex flex-col items-center">
               <div
-                className={w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium transition-colors +
-                  (isRejected && isCurrent
+                className={cn(
+                  'w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium transition-colors',
+                  isRejected && isCurrent
                     ? 'bg-red-500 text-white'
                     : isDone || currentStep >= index + 1
                     ? 'bg-green-500 text-white'
                     : isCurrent
                     ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 text-gray-500')
-                }
+                    : 'bg-gray-200 text-gray-500'
+                )}
               >
                 {isRejected && isCurrent ? (
-                  <X className="w-3 h-3" />
+                  <X className="w-3.5 h-3.5" aria-hidden="true" />
                 ) : isDone || currentStep > index ? (
-                  <Check className="w-3 h-3" />
+                  <Check className="w-3.5 h-3.5" aria-hidden="true" />
                 ) : isCurrent ? (
-                  <Clock className="w-3 h-3" />
+                  <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                 ) : (
                   <span>{index + 1}</span>
                 )}
@@ -72,9 +69,10 @@ export function ApprovalTimeline({ status }: ApprovalTimelineProps) {
             </div>
             {!isLast && (
               <div
-                className={h-0.5 flex-1 mx-1 +
-                  (currentStep > index + 1 ? 'bg-green-400' : 'bg-gray-200')
-                }
+                className={cn(
+                  'h-0.5 flex-1 mx-1 transition-colors',
+                  currentStep > index + 1 ? 'bg-green-400' : 'bg-gray-200'
+                )}
               />
             )}
           </div>
@@ -83,6 +81,3 @@ export function ApprovalTimeline({ status }: ApprovalTimelineProps) {
     </div>
   );
 }
-// fix: approval timeline shows correct step for ORDERED status
-// refactor: timeline steps derived from constants
-// improve: add timestamps to timeline steps
