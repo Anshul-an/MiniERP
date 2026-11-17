@@ -32,3 +32,4 @@ export interface LeaveBalance {
   usedDays: number;
   year: number;
 }
+// add: LeaveFormData interface
