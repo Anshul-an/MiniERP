@@ -134,3 +134,4 @@ export function Users() {
 // improve: show department in user table
 // improve: confirm before deactivating user
 // fix: sort users alphabetically
+// final: page review complete
