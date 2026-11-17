@@ -10,3 +10,4 @@ export const PURCHASE_STATUS_TRANSITIONS: Record<string, string[]> = {
 
 export const REJECTION_STATUSES = ['REJECTED'];
 export const TERMINAL_STATUSES = ['REJECTED', 'RECEIVED'];
+// add: MAX_PURCHASE_AMOUNT constant
