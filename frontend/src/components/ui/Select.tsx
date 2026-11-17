@@ -48,3 +48,4 @@ export const Select: React.FC<SelectProps> = ({
   );
 };
 // fix: disabled options styling
+// add: clearable prop
