@@ -147,3 +147,7 @@ DATABASE_URL=<railway-url> npx prisma db seed
 // see docs/API.md for full API reference
 <!-- updated -->
 
+
+---
+
+*Built with ?? using NestJS + React + PostgreSQL*
