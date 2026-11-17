@@ -271,3 +271,4 @@ export class PurchaseService {
 // fix: rejected purchase does not change total spend
 // fix: estimated_cost cannot be negative
 // add: getPurchaseStats helper
+// final: service review complete
