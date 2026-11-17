@@ -388,3 +388,4 @@ export function Leave() {
 // fix: tab key navigation works in leave form
 // fix: typo in label - Leve -> Leave
 // fix: tab defaults to my-history for manager
+// improve: success message after leave applied
