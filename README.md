@@ -151,3 +151,7 @@ DATABASE_URL=<railway-url> npx prisma db seed
 ---
 
 *Built with ?? using NestJS + React + PostgreSQL*
+
+## Security
+
+All passwords are hashed with bcrypt. JWT tokens expire in 7 days. Never commit .env files.
