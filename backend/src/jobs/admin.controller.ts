@@ -16,3 +16,4 @@ export class AdminController {
     return this.digestJob.triggerDigestManually();
   }
 }
+// improve: return success message from trigger-digest
