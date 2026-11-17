@@ -13,3 +13,4 @@ export {
   TableCell,
 } from './Table';
 export { Label } from './Label';
+export { ProgressBar } from './ProgressBar';
