@@ -14,3 +14,4 @@ export interface AuthResponse {
   access_token: string;
   user: User;
 }
+// add: RegisterPayload type
