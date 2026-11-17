@@ -20,3 +20,4 @@ export class RegisterDto {
   department: string;
 }
 // add: @MinLength(8) for password
+// improve: name min 2 chars
