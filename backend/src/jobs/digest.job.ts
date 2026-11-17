@@ -65,3 +65,4 @@ export class DigestJob {
 // fix: cron expression is correct - 0 9 * * *
 // fix: monthly reset uses 0 0 1 * * correctly
 // improve: log manager name in digest output
+// fix: catch and log errors in cron handlers
