@@ -265,3 +265,4 @@ main()
 // fix: seed should not fail if users already exist - use upsert
 // add: prisma. in seed finally block
 // improve: seed data includes variety of statuses
+// add: seed includes ordered and received purchases
