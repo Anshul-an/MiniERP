@@ -23,3 +23,4 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
 
 
 // improve: add retry logic on startup
+// fix: log db connection on startup
