@@ -35,3 +35,4 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
     </nav>
   );
 };
+// fix: last item should not be a link
