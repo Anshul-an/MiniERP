@@ -155,3 +155,8 @@ DATABASE_URL=<railway-url> npx prisma db seed
 ## Security
 
 All passwords are hashed with bcrypt. JWT tokens expire in 7 days. Never commit .env files.
+
+## Tests
+
+Test stubs are in __tests__ folders. Run with 
+pm test in backend.
