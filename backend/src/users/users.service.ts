@@ -78,3 +78,4 @@ export class UsersService {
   }
 }
 // fix: exclude password hash from user response
+// perf: exclude inactive users by default
