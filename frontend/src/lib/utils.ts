@@ -5,3 +5,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 // add: truncateText helper
+// add: classNames helper (alias of cn)
