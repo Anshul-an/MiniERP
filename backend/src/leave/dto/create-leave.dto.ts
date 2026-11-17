@@ -16,3 +16,4 @@ export class CreateLeaveDto {
   reason: string;
 }
 // add: @IsDateString validation
+// improve: reason min length 10 chars
