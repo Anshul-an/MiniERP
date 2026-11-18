@@ -1,33 +1,33 @@
-import { cn } from '../lib/utils';
+interface StatusBadgeProps { status: string; }
 
-interface StatusBadgeProps {
-  status: string;
-}
-
-const statusColors: Record<string, string> = {
-  PENDING: 'bg-yellow-100 text-yellow-800 border border-yellow-200',
-  APPROVED: 'bg-green-100 text-green-800 border border-green-200',
-  REJECTED: 'bg-red-100 text-red-800 border border-red-200',
-  PENDING_MANAGER: 'bg-blue-100 text-blue-800 border border-blue-200',
-  PENDING_ADMIN: 'bg-purple-100 text-purple-800 border border-purple-200',
-  DRAFT: 'bg-gray-100 text-gray-700 border border-gray-200',
-  ORDERED: 'bg-indigo-100 text-indigo-800 border border-indigo-200',
-  RECEIVED: 'bg-emerald-100 text-emerald-800 border border-emerald-200',
-  SICK: 'bg-red-100 text-red-700 border border-red-200',
-  CASUAL: 'bg-blue-100 text-blue-700 border border-blue-200',
-  ANNUAL: 'bg-green-100 text-green-700 border border-green-200',
+const statusStyles: Record<string, { bg: string; color: string; border: string; dot?: string }> = {
+  PENDING:         { bg: 'rgba(245,158,11,0.1)',  color: '#fbbf24', border: 'rgba(245,158,11,0.25)',  dot: '#fbbf24' },
+  APPROVED:        { bg: 'rgba(16,185,129,0.1)',  color: '#34d399', border: 'rgba(16,185,129,0.25)', dot: '#34d399' },
+  REJECTED:        { bg: 'rgba(239,68,68,0.1)',   color: '#f87171', border: 'rgba(239,68,68,0.25)',  dot: '#f87171' },
+  PENDING_MANAGER: { bg: 'rgba(59,130,246,0.1)',  color: '#60a5fa', border: 'rgba(59,130,246,0.25)', dot: '#60a5fa' },
+  PENDING_ADMIN:   { bg: 'rgba(139,92,246,0.1)',  color: '#c084fc', border: 'rgba(139,92,246,0.25)', dot: '#c084fc' },
+  ORDERED:         { bg: 'rgba(99,102,241,0.1)',  color: '#a5b4fc', border: 'rgba(99,102,241,0.25)', dot: '#a5b4fc' },
+  RECEIVED:        { bg: 'rgba(16,185,129,0.12)', color: '#6ee7b7', border: 'rgba(16,185,129,0.3)',  dot: '#6ee7b7' },
+  DRAFT:           { bg: 'rgba(100,116,139,0.1)', color: '#94a3b8', border: 'rgba(100,116,139,0.2)' },
 };
 
 const statusLabels: Record<string, string> = {
-  PENDING_MANAGER: 'Pending Manager',
-  PENDING_ADMIN: 'Pending Admin',
+  PENDING_MANAGER: 'Mgr. Review',
+  PENDING_ADMIN: 'Admin Review',
 };
 
 export function StatusBadge({ status }: StatusBadgeProps) {
-  const color = statusColors[status] || 'bg-gray-100 text-gray-700 border border-gray-200';
-  const label = statusLabels[status] || status.charAt(0) + status.slice(1).toLowerCase();
+  const s = statusStyles[status] || { bg: 'rgba(100,116,139,0.1)', color: '#94a3b8', border: 'rgba(100,116,139,0.2)' };
+  const label = statusLabels[status] || (status.charAt(0) + status.slice(1).toLowerCase().replace(/_/g, ' '));
+
   return (
-    <span className={cn('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium', color)}>
+    <span
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold"
+      style={{ background: s.bg, color: s.color, border: `1px solid ${s.border}` }}
+    >
+      {s.dot && (
+        <span className="w-1.5 h-1.5 rounded-full shrink-0 animate-pulse" style={{ background: s.dot }} />
+      )}
       {label}
     </span>
   );
